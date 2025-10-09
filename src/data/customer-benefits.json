@@ -1,0 +1,25 @@
+{
+  "title": "Customer Benefits",
+  "subtitle": "Why Choose Mindotek Logistics",
+  "items": [
+    "Focus on Business",
+    "Reduce Cost",
+    "Zero Material Missing",
+    "Online Database Report",
+    "Reduce Mistake (Human Error & Misroute)",
+    "Simply Work Flow",
+    "No More Headcounts",
+    "Transparent & Clear Process",
+    "End to End"
+  ],
+  "kpi": {
+    "title": "Key Performance Indicators",
+    "items": [
+      "Inventory Accuracy",
+      "Delivery On Time",
+      "Good Handling",
+      "Proof of Delivery",
+      "Zero Percentage Goods Missing"
+    ]
+  }
+}

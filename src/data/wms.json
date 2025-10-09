@@ -1,0 +1,13 @@
+{
+    "title": "Warehouse Management System (WMS)",
+    "description": "Custom-built WMS developed by our in-house IT engineering team, aligned with customer business processes.",
+    "features": [
+      "Inbound tracking",
+      "Outbound tracking",
+      "Real-time stock monitoring",
+      "Material aging report",
+      "Inventory report",
+      "Transport usage analytics",
+      "KPI dashboard"
+    ]
+  }

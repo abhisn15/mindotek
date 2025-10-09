@@ -1,0 +1,91 @@
+{
+  "title": "Our Warehouse Locations",
+  "description": "Strategic warehouse facilities across Indonesia for optimal distribution and logistics support",
+  "locations": [
+    {
+      "id": "pekanbaru",
+      "name": "TPM Logistik Pekanbaru",
+      "city": "Pekanbaru",
+      "region": "Riau",
+      "address": "Pekanbaru, Riau",
+      "coordinates": {
+        "lat": 0.532504,
+        "lng": 101.397119
+      },
+      "mapUrl": "https://www.google.com/maps/place/0%C2%B031'57.2%22N+101%C2%B023'49.9%22E/@0.532504,101.397119",
+      "streetViewUrl": "https://www.google.com/maps/place/0%C2%B031'57.2%22N+101%C2%B023'49.9%22E/@0.532504,101.397119,3a,77.5y,47.86h,91.2t/data=!3m7!1e1!3m5!1sFqPYzP2cQKcUshtJmA_8CQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1.1952382382399236%26panoid%3DFqPYzP2cQKcUshtJmA_8CQ%26yaw%3D47.85813240720279!7i16384!8i8192!4m4!3m3!8m2!3d0.53255!4d101.39718"
+    },
+    {
+      "id": "medan",
+      "name": "TPM Logistik Medan",
+      "city": "Medan",
+      "region": "Sumatera Utara",
+      "address": "Medan, Sumatera Utara",
+      "coordinates": {
+        "lat": 3.595196,
+        "lng": 98.672223
+      },
+      "mapUrl": "https://www.google.com/maps/place/Medan,+Kota+Medan,+Sumatera+Utara/@3.595196,98.672223"
+    },
+    {
+      "id": "jakarta",
+      "name": "TPM Logistik Jakarta",
+      "city": "Jakarta",
+      "region": "DKI Jakarta",
+      "address": "Jakarta Selatan, DKI Jakarta",
+      "coordinates": {
+        "lat": -6.2608,
+        "lng": 106.7810
+      },
+      "mapUrl": "https://www.google.com/maps/place/Jakarta"
+    },
+    {
+      "id": "tangerang",
+      "name": "TPM Logistik Tangerang",
+      "city": "Tangerang",
+      "region": "Banten",
+      "address": "Tangerang, Banten",
+      "coordinates": {
+        "lat": -6.1783,
+        "lng": 106.6319
+      },
+      "mapUrl": "https://www.google.com/maps/place/Tangerang"
+    },
+    {
+      "id": "batam",
+      "name": "TPM Logistik Batam",
+      "city": "Batam",
+      "region": "Kepulauan Riau",
+      "address": "Batam, Kepulauan Riau",
+      "coordinates": {
+        "lat": 1.0456,
+        "lng": 104.0305
+      },
+      "mapUrl": "https://www.google.com/maps/place/Batam"
+    },
+    {
+      "id": "palembang",
+      "name": "TPM Logistik Palembang",
+      "city": "Palembang",
+      "region": "Sumatera Selatan",
+      "address": "Palembang, Sumatera Selatan",
+      "coordinates": {
+        "lat": -2.9760,
+        "lng": 104.7754
+      },
+      "mapUrl": "https://www.google.com/maps/place/Palembang"
+    },
+    {
+      "id": "surabaya",
+      "name": "TPM Logistik Surabaya",
+      "city": "Surabaya",
+      "region": "Jawa Timur",
+      "address": "Surabaya, Jawa Timur",
+      "coordinates": {
+        "lat": -7.2575,
+        "lng": 112.7521
+      },
+      "mapUrl": "https://www.google.com/maps/place/Surabaya"
+    }
+  ]
+}
