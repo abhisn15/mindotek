@@ -1,21 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import Script from 'next/script';
-import StaggeredMenu from '@/components/StaggeredMenu';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-poppins',
-  display: 'swap',
-});
+import MobileMenu from '@/components/MobileMenu';
+import ScrollToTop from '@/components/ScrollToTop';
+import PerformanceMonitor from './performance';
+import ResourcePreloader from '@/components/ResourcePreloader';
+import CriticalCSS from '@/components/CriticalCSS';
+import PerformanceOptimizer from '@/components/PerformanceOptimizer';
+import ScrollHandler from '@/components/ScrollHandler';
 
 export const metadata: Metadata = {
   title: 'Mindotek – PT. Logamindo Teknologi Indonesia | TPM Group Company Profile',
@@ -82,50 +74,65 @@ export const metadata: Metadata = {
   },
 };
 
-const menuItems = [
-  { label: 'Home', ariaLabel: 'Go to home page', link: '/', index: 1 },
-  { label: 'Company', ariaLabel: 'Learn about our company', link: '/#company', index: 2 },
-  { label: 'Services', ariaLabel: 'View our services', link: '/services', index: 3 },
-  { label: 'Vision', ariaLabel: 'Our vision and mission', link: '/#vision-mission', index: 4 },
-  { label: 'Locations', ariaLabel: 'Our warehouse locations', link: '/warehouse-locations', index: 5 },
-  { label: 'WMS', ariaLabel: 'Warehouse Management System', link: '/wms-system', index: 6 },
-  { label: 'Contact', ariaLabel: 'Get in touch with us', link: '/#contact', index: 7 }
-];
-
-const socialItems = [
-  { label: 'Twitter', link: 'https://twitter.com' },
-  { label: 'GitHub', link: 'https://github.com' },
-  { label: 'LinkedIn', link: 'https://linkedin.com' }
-];
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      </head>
+      <body className="font-sans antialiased">
         {children}
 
-        {/* Staggered Mobile Menu */}
-        <div className="block md:hidden fixed z-[9999] pointer-events-none">
-          <StaggeredMenu
-            position="right"
-            items={menuItems}
-            socialItems={socialItems}
-            // displaySocials={true}
-            displayItemNumbering={true}
-            menuButtonColor="#1f2937"
-            openMenuButtonColor="#ed3f27"
-            changeMenuColorOnOpen={true}
-            colors={['#B19EEF', '#5227FF']}
-            logoUrl="/assets/logo-mindotek.webp"
-            accentColor="#ff6b6b"
-            isFixed={true}
-            className="pointer-events-auto"
-          />
-        </div>
+        {/* Mobile Menu */}
+        <MobileMenu />
 
-        {/* Google Analytics */}
+        {/* Scroll to Top Button */}
+        <ScrollToTop />
+
+        {/* Performance Monitor */}
+        <PerformanceMonitor />
+
+        {/* Resource Preloader */}
+        <ResourcePreloader />
+
+        {/* Critical CSS */}
+        <CriticalCSS />
+
+        {/* Performance Optimizer */}
+        <PerformanceOptimizer />
+
+        {/* Scroll Handler */}
+        <ScrollHandler />
+
+        {/* Service Worker Registration */}
+        <Script
+          id="sw-registration"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                      console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                      console.log('SW registration failed: ', registrationError);
+                    });
+                });
+              }
+            `,
+          }}
+        />
+
+        {/* Analytics Scripts - Uncomment and replace IDs when ready for production */}
+        
+        {/* Google Analytics - Replace GA_MEASUREMENT_ID with your actual ID */}
+        {/* 
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
           strategy="afterInteractive"
@@ -138,8 +145,10 @@ export default function RootLayout({
             gtag('config', 'GA_MEASUREMENT_ID');
           `}
         </Script>
+        */}
 
-        {/* Microsoft Clarity */}
+        {/* Microsoft Clarity - Replace YOUR_CLARITY_ID with your actual ID */}
+        {/* 
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
             (function(c,l,a,r,i,t,y){
@@ -149,6 +158,7 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "YOUR_CLARITY_ID");
           `}
         </Script>
+        */}
       </body>
     </html>
   );

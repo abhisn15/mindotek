@@ -1,4 +1,21 @@
+# Allow all search engines to crawl the site
 User-agent: *
 Allow: /
 
-Sitemap: https://www.mindotek.com/sitemap.xml
+# Disallow admin or private pages (if any in the future)
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap location
+Sitemap: https://mindotek.com/sitemap.xml
+
+# Crawl delay (optional, helps prevent server overload)
+Crawl-delay: 0.5
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
