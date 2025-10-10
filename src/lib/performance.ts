@@ -25,7 +25,6 @@ export const preloadResources = () => {
   if (typeof window !== 'undefined') {
     // Preload critical images
     const criticalImages = [
-      '/assets/banner-hero.png',
       '/assets/logo-mindotek.webp',
     ];
 

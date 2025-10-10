@@ -87,9 +87,8 @@ export default function PerformanceOptimizer() {
     const optimizeNetwork = () => {
       // Prefetch critical resources
       const prefetchCriticalResources = () => {
-        const criticalResources = [
+        const criticalResources: string[] = [
           '/assets/logo-mindotek.webp',
-          '/assets/banner-hero.png',
         ];
 
         criticalResources.forEach(resource => {
@@ -104,7 +103,7 @@ export default function PerformanceOptimizer() {
       const delayNonCriticalResources = () => {
         setTimeout(() => {
           // Load non-critical resources after initial render
-          const nonCriticalResources = [
+          const nonCriticalResources: string[] = [
             // Add non-critical resources here
           ];
 

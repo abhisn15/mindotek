@@ -1,0 +1,12 @@
+[
+  {
+    "id": "wms",
+    "title": "Warehouse Management System",
+    "category": "Software Development",
+    "description": "Comprehensive digital solution for modern warehouse operations with real-time tracking and advanced analytics.",
+    "image": "/assets/portfolio/wms-homepage.webp",
+    "tags": ["WMS", "Logistics", "Real-time", "Analytics"],
+    "year": "2023",
+    "link": "/portfolio/wms"
+  }
+]

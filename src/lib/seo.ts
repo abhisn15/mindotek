@@ -30,7 +30,7 @@ export const generateMetadata = (config: SEOConfig) => {
       type: (config.ogType as any) || 'website',
       images: [
         {
-          url: config.ogImage || '/assets/banner-hero.png',
+          url: config.ogImage || '/assets/logo-mindotek.webp',
           width: 1200,
           height: 630,
           alt: config.title,
@@ -41,7 +41,7 @@ export const generateMetadata = (config: SEOConfig) => {
       card: (config.twitterCard as any) || 'summary_large_image',
       title: config.title,
       description: config.description,
-      images: [config.ogImage || '/assets/banner-hero.png'],
+      images: [config.ogImage || '/assets/logo-mindotek.webp'],
       creator: '@tpmgroup',
     },
     robots: {

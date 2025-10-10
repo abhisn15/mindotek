@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const menuItems = [
   { label: "Home", link: "#hero", id: "hero" },
@@ -10,7 +12,7 @@ const menuItems = [
   { label: "Vision", link: "#vision-mission", id: "vision-mission" },
   { label: "Services", link: "#services", id: "services" },
   { label: "Locations", link: "#locations", id: "locations" },
-  { label: "WMS", link: "#wms", id: "wms" },
+  { label: "Portfolio", link: "/portfolio", id: "portfolio", isExternal: true },
   { label: "Contact", link: "#contact", id: "contact" },
 ];
 
@@ -18,6 +20,7 @@ export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const observerOptions = {
@@ -57,7 +60,14 @@ export default function MobileMenu() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleMenuClick = (link: string) => {
+  const handleMenuClick = (link: string, isExternal?: boolean) => {
+    if (isExternal) {
+      // For external links, use Next.js router
+      router.push(link);
+      setIsOpen(false);
+      return;
+    }
+    
     const targetId = link.replace("#", "");
     const element = document.getElementById(targetId);
 
@@ -156,14 +166,14 @@ export default function MobileMenu() {
               <nav className="px-6 py-8">
                 <div className="space-y-2">
                   {menuItems.map((item, index) => {
-                    const isActive = activeSection === item.id;
+                    const isActive = !item.isExternal && activeSection === item.id;
                     return (
                       <motion.button
                         key={item.id}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        onClick={() => handleMenuClick(item.link)}
+                        onClick={() => handleMenuClick(item.link, item.isExternal)}
                         className={`w-full text-left px-6 py-4 rounded-xl transition-all duration-300 flex items-center justify-between group ${
                           isActive
                             ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"

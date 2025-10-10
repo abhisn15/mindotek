@@ -1,0 +1,141 @@
+{
+  "title": "Warehouse Management System (WMS)",
+  "subtitle": "Comprehensive Digital Solution for Modern Warehouse Operations",
+  "description": "Our custom-built Warehouse Management System streamlines inventory tracking, order fulfillment, and warehouse operations with real-time visibility and advanced analytics.",
+  "client": "PT. Logamindo Teknologi Indonesia (Mindotek)",
+  "year": "2023 - Present",
+  "category": "Software Development",
+  "tags": ["WMS", "Inventory Management", "Logistics", "Real-time Tracking", "Analytics"],
+  "content": [
+    {
+      "title": "WMS Dashboard Overview",
+      "description": "Centralized command center providing real-time visibility into all warehouse operations. Monitor key metrics, track inventory levels, and manage orders from a single, intuitive interface. The dashboard displays critical KPIs including stock levels, order status, warehouse utilization, and performance metrics.",
+      "image": "/assets/portfolio/wms-homepage.webp",
+      "features": [
+        "Real-time inventory overview across all locations",
+        "Interactive charts and analytics",
+        "Quick access to critical operations",
+        "Customizable widgets and layouts",
+        "Multi-warehouse management dashboard"
+      ]
+    },
+    {
+      "title": "Inbound Management",
+      "description": "Streamline your receiving process with our advanced inbound management module. Track incoming shipments, manage purchase orders, perform quality checks, and automatically update inventory levels. The system ensures accurate receiving with barcode scanning and real-time documentation.",
+      "image": "/assets/portfolio/wms-inbound.webp",
+      "features": [
+        "Purchase order tracking and validation",
+        "Barcode scanning for accurate receiving",
+        "Quality control and inspection workflows",
+        "Automated inventory updates",
+        "Supplier performance tracking"
+      ]
+    },
+    {
+      "title": "Outbound Operations",
+      "description": "Optimize your order fulfillment process with intelligent picking, packing, and shipping workflows. The outbound module ensures accurate order processing, reduces picking errors, and accelerates shipping with integrated carrier management and automated documentation.",
+      "image": "/assets/portfolio/wms-outbond.webp",
+      "features": [
+        "Intelligent order picking and wave planning",
+        "Multi-order batch picking",
+        "Packing validation and verification",
+        "Shipping carrier integration",
+        "Automated shipping label generation"
+      ]
+    },
+    {
+      "title": "Stock Management",
+      "description": "Maintain complete control over your inventory with comprehensive stock management capabilities. Track stock movements, manage multiple stock locations, perform cycle counts, and automate reorder processes. Real-time stock visibility across all warehouse zones.",
+      "image": "/assets/portfolio/wms-stock.webp",
+      "features": [
+        "Multi-location inventory tracking",
+        "Bin and zone management",
+        "Automated stock replenishment",
+        "Cycle counting and physical inventory",
+        "Stock transfer between locations"
+      ]
+    },
+    {
+      "title": "Key Performance Indicators",
+      "description": "Data-driven insights with comprehensive KPI tracking and performance analytics. Monitor warehouse efficiency, productivity metrics, accuracy rates, and operational costs. Make informed decisions with real-time performance dashboards and trend analysis.",
+      "image": "/assets/portfolio/wms-key-performance-indicator.webp",
+      "features": [
+        "Real-time performance metrics",
+        "Customizable KPI dashboards",
+        "Warehouse efficiency tracking",
+        "Labor productivity analytics",
+        "Cost per order analysis"
+      ]
+    },
+    {
+      "title": "Inventory Reports",
+      "description": "Generate detailed inventory reports for complete stock visibility and analysis. Track stock levels, movements, valuation, and trends across all products and locations. Export reports in multiple formats for accounting and business intelligence purposes.",
+      "image": "/assets/portfolio/wms-inventory-report.webp",
+      "features": [
+        "Stock level and valuation reports",
+        "Product movement history",
+        "ABC analysis and classification",
+        "Dead stock and slow-moving items",
+        "Customizable report templates"
+      ]
+    },
+    {
+      "title": "Aging Report Analysis",
+      "description": "Proactive inventory management with comprehensive aging reports. Identify slow-moving and obsolete inventory, optimize stock rotation with FIFO/FEFO management, and reduce carrying costs. Visual analytics help prevent stockouts and overstocking.",
+      "image": "/assets/portfolio/wms-aging-report.webp",
+      "features": [
+        "Product age tracking and analysis",
+        "FIFO/FEFO compliance monitoring",
+        "Expiry date management",
+        "Slow-moving inventory alerts",
+        "Stock rotation recommendations"
+      ]
+    },
+    {
+      "title": "Transport Usage Analytics",
+      "description": "Comprehensive transportation management and analytics. Track vehicle utilization, delivery performance, route efficiency, and transportation costs. Optimize logistics operations with data-driven insights and real-time fleet monitoring.",
+      "image": "/assets/portfolio/wms-transport-usage.webp",
+      "features": [
+        "Fleet utilization tracking",
+        "Delivery performance metrics",
+        "Route optimization insights",
+        "Transportation cost analysis",
+        "Vehicle maintenance scheduling"
+      ]
+    }
+  ],
+  "technologies": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "PostgreSQL",
+    "Node.js",
+    "Express",
+    "Redis",
+    "Docker",
+    "AWS"
+  ],
+  "results": [
+    {
+      "metric": "95%",
+      "description": "Inventory accuracy improvement"
+    },
+    {
+      "metric": "40%",
+      "description": "Faster order processing time"
+    },
+    {
+      "metric": "60%",
+      "description": "Reduction in picking errors"
+    },
+    {
+      "metric": "99.9%",
+      "description": "System uptime and reliability"
+    }
+  ],
+  "testimonial": {
+    "quote": "The WMS implementation has transformed our warehouse operations, providing real-time visibility and significantly improving our efficiency.",
+    "author": "Operations Director",
+    "company": "PT. Logamindo Teknologi Indonesia"
+  }
+}

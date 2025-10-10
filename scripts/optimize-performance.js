@@ -135,7 +135,6 @@ const CACHE_NAME = 'mindotek-v1';
 const urlsToCache = [
   '/',
   '/assets/logo-mindotek.webp',
-  '/assets/banner-hero.png',
   '/assets/icon.webp',
   '/globals.css'
 ];

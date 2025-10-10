@@ -60,7 +60,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/banner-hero.png",
+        url: "/assets/logo-mindotek.webp",
         width: 1200,
         height: 630,
         alt: "Mindotek Warehouse Facility",
@@ -72,7 +72,7 @@ export const metadata = {
     title: "Mindotek – PT. Logamindo Teknologi Indonesia | TPM Group",
     description:
       "Leading logistics and warehousing company in Indonesia providing comprehensive supply chain solutions.",
-    images: ["/assets/banner-hero.png"],
+    images: ["/assets/logo-mindotek.webp"],
     creator: "@tpmgroup",
   },
   robots: {
@@ -935,160 +935,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* WMS System */}
-        <section
-          id="wms"
-          className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-white"
-        >
-          <div className="max-w-7xl mx-auto">
-            <FadeInView>
-              <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
-                  {wmsData.title}
-                </h2>
-                <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed">
-                  {wmsData.description}
-                </p>
-              </div>
-            </FadeInView>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
-              {wmsData.features.map((feature, index) => (
-                <FadeInView key={feature} delay={index * 0.1}>
-                  <div className="group bg-white/95 backdrop-blur-sm border-2 border-red-100 rounded-2xl p-6 sm:p-8 hover:border-red-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 min-h-[140px] flex flex-col">
-                    <div className="w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform">
-                      <span className="text-white font-bold text-base">
-                        #{index + 1}
-                      </span>
-                    </div>
-                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-600 transition-colors leading-tight">
-                      {feature}
-                    </h3>
-                  </div>
-                </FadeInView>
-              ))}
-            </div>
-
-            <FadeInView>
-              <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 sm:p-12 lg:p-16 shadow-xl border border-red-100 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-5">
-                  <svg
-                    className="w-full h-full"
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                  >
-                    <defs>
-                      <pattern
-                        id="hexagons"
-                        width="20"
-                        height="20"
-                        patternUnits="userSpaceOnUse"
-                      >
-                        <polygon
-                          points="10,0 15,5 10,10 5,5"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="0.5"
-                        />
-                      </pattern>
-                    </defs>
-                    <rect width="100" height="100" fill="url(#hexagons)" />
-                  </svg>
-                </div>
-
-                <div className="relative z-10">
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-center text-gray-900">
-                    Advanced WMS Capabilities
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
-                    {[
-                      {
-                        icon: (
-                          <svg
-                            className="w-7 sm:w-8 h-7 sm:h-8 text-white"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                            />
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                            />
-                          </svg>
-                        ),
-                        title: "Custom Built",
-                        description:
-                          "Developed in-house by our IT team to match your exact business processes and requirements",
-                      },
-                      {
-                        icon: (
-                          <svg
-                            className="w-7 sm:w-8 h-7 sm:h-8 text-white"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M13 10V3L4 14h7v7l9-11h-7z"
-                            />
-                          </svg>
-                        ),
-                        title: "Real-Time Data",
-                        description:
-                          "Monitor your inventory and operations with up-to-the-minute accuracy and live updates",
-                      },
-                      {
-                        icon: (
-                          <svg
-                            className="w-7 sm:w-8 h-7 sm:h-8 text-white"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-                            />
-                          </svg>
-                        ),
-                        title: "Scalable",
-                        description:
-                          "Grows with your business, from single warehouse to nationwide operations seamlessly",
-                      },
-                    ].map((item, index) => (
-                      <FadeInView key={index} delay={index * 0.1}>
-                        <div className="text-center group">
-                          <div className="w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                            {item.icon}
-                          </div>
-                          <h4 className="font-bold text-lg sm:text-xl mb-3 text-gray-900 group-hover:text-red-600 transition-colors">
-                            {item.title}
-                          </h4>
-                          <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                            {item.description}
-                          </p>
-                        </div>
-                      </FadeInView>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </FadeInView>
-          </div>
-        </section>
 
         {/* Legality Section
         <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-br from-red-50/30 via-white to-orange-50/30">
