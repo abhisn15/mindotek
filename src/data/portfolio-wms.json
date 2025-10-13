@@ -1,11 +1,11 @@
 {
   "title": "Warehouse Management System (WMS)",
-  "subtitle": "Comprehensive Digital Solution for Modern Warehouse Operations",
-  "description": "Our custom-built Warehouse Management System streamlines inventory tracking, order fulfillment, and warehouse operations with real-time visibility and advanced analytics.",
+  "subtitle": "Custom-Built Digital Solution for Modern Warehouse Operations",
+  "description": "Our custom-built Warehouse Management System developed with PHP Native & CodeIgniter 3 Framework streamlines inventory tracking, order fulfillment, and warehouse operations with real-time visibility and advanced analytics. Proven, stable, and highly customizable to meet specific business needs.",
   "client": "PT. Logamindo Teknologi Indonesia (Mindotek)",
   "year": "2023 - Present",
   "category": "Software Development",
-  "tags": ["WMS", "Inventory Management", "Logistics", "Real-time Tracking", "Analytics"],
+  "tags": ["WMS", "PHP", "CodeIgniter 3", "Inventory Management", "Logistics", "Real-time Tracking", "Analytics"],
   "content": [
     {
       "title": "WMS Dashboard Overview",
@@ -105,15 +105,15 @@
     }
   ],
   "technologies": [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "PostgreSQL",
-    "Node.js",
-    "Express",
-    "Redis",
-    "Docker",
-    "AWS"
+    "PHP Native",
+    "CodeIgniter 3",
+    "MySQL",
+    "JavaScript",
+    "jQuery",
+    "Bootstrap",
+    "AJAX",
+    "HTML5",
+    "CSS3"
   ],
   "results": [
     {

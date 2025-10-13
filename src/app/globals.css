@@ -11,9 +11,56 @@ html {
 }
 
 body {
-  scroll-behavior: smooth;
   font-family: inherit;
   overflow-x: hidden;
+}
+
+/* Horizontal scroll styling for mobile filters */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
+/* Enhanced smooth scroll with CSS */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Smooth momentum scrolling for touch devices */
+@supports (-webkit-overflow-scrolling: touch) {
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Better scroll snap behavior */
+@supports (scroll-snap-type: y proximity) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+}
+
+/* Optimize scrolling performance */
+* {
+  scroll-margin-top: 80px;
+}
+
+/* Smooth deceleration curve for scroll */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom easing for smoother feel */
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Performance optimizations */
@@ -34,15 +81,16 @@ img, video, canvas, svg {
   height: auto;
 }
 
-/* Smooth transitions globally with performance optimization */
+/* Smooth scrolling enhancements */
 @media (prefers-reduced-motion: no-preference) {
-  :root {
-    scroll-behavior: smooth;
-  }
-  
   /* Use transform instead of changing layout properties for animations */
   .animate-transform {
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  /* Smooth momentum scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
   }
 }
 

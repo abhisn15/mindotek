@@ -27,7 +27,7 @@ export const generateMetadata = (config: SEOConfig) => {
       url: baseUrl,
       siteName: 'Mindotek',
       locale: 'en_ID',
-      type: (config.ogType as any) || 'website',
+      type: (config.ogType as 'website' | 'article') || 'website',
       images: [
         {
           url: config.ogImage || '/assets/logo-mindotek.webp',
@@ -38,7 +38,7 @@ export const generateMetadata = (config: SEOConfig) => {
       ],
     },
     twitter: {
-      card: (config.twitterCard as any) || 'summary_large_image',
+      card: (config.twitterCard as 'summary' | 'summary_large_image' | 'app' | 'player') || 'summary_large_image',
       title: config.title,
       description: config.description,
       images: [config.ogImage || '/assets/logo-mindotek.webp'],

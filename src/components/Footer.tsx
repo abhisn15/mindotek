@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,7 +10,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Mindotek</h3>
+            <Link href="/" className="block mb-4">
+              <Image
+                src="/assets/logo-mindotek.webp"
+                alt="Mindotek Logo"
+                width={180}
+                height={30}
+                className="h-8 w-auto hover:opacity-90 transition-opacity"
+              />
+            </Link>
             <p className="text-gray-400">
               PT. Logamindo Teknologi Indonesia
             </p>
@@ -28,17 +37,17 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-gray-400 hover:text-red-400 transition">
+                <Link href="/#services" className="text-gray-400 hover:text-red-400 transition">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/wms-system" className="text-gray-400 hover:text-red-400 transition">
+                <Link href="/portfolio/wms" className="text-gray-400 hover:text-red-400 transition">
                   WMS System
                 </Link>
               </li>
               <li>
-                <Link href="/warehouse-locations" className="text-gray-400 hover:text-red-400 transition">
+                <Link href="/#locations" className="text-gray-400 hover:text-red-400 transition">
                   Warehouse Locations
                 </Link>
               </li>

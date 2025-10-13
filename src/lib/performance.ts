@@ -1,6 +1,15 @@
 // Performance monitoring utilities
 
-export const reportWebVitals = (metric: any) => {
+interface WebVitalsMetric {
+  id: string;
+  name: string;
+  value: number;
+  rating?: string;
+  delta?: number;
+  entries?: PerformanceEntry[];
+}
+
+export const reportWebVitals = (metric: WebVitalsMetric) => {
   // Log to console in development
   if (process.env.NODE_ENV === 'development') {
     console.log(metric);

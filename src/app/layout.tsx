@@ -1,13 +1,9 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Script from 'next/script';
-import MobileMenu from '@/components/MobileMenu';
+// MobileMenu is used globally in the app
 import ScrollToTop from '@/components/ScrollToTop';
-import PerformanceMonitor from './performance';
-import ResourcePreloader from '@/components/ResourcePreloader';
-import CriticalCSS from '@/components/CriticalCSS';
-import PerformanceOptimizer from '@/components/PerformanceOptimizer';
-import ScrollHandler from '@/components/ScrollHandler';
+import EnhancedSmoothScroll from '@/components/EnhancedSmoothScroll';
 
 export const metadata: Metadata = {
   title: 'Mindotek – PT. Logamindo Teknologi Indonesia | TPM Group Company Profile',
@@ -25,6 +21,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  other: {
+    'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com; connect-src 'self' https://maps.googleapis.com;",
+  },
   openGraph: {
     title: 'Mindotek – PT. Logamindo Teknologi Indonesia | TPM Group',
     description: 'Leading logistics and warehousing company in Indonesia providing comprehensive supply chain solutions with 7 strategic locations nationwide.',
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/assets/banner-hero.png',
+        url: '/assets/logo-mindotek.webp',
         width: 1200,
         height: 630,
         alt: 'Mindotek Warehouse Facility',
@@ -45,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mindotek – PT. Logamindo Teknologi Indonesia | TPM Group',
     description: 'Leading logistics and warehousing company in Indonesia providing comprehensive supply chain solutions.',
-    images: ['/assets/banner-hero.png'],
+    images: ['/assets/logo-mindotek.webp'],
     creator: '@tpmgroup',
   },
   robots: {
@@ -64,14 +63,15 @@ export const metadata: Metadata = {
     apple: '/assets/logo-mindotek.webp',
   },
   manifest: '/site.webmanifest',
-  themeColor: '#ED3F27',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
   verification: {
     google: 'your-google-verification-code',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#ED3F27',
 };
 
 export default function RootLayout({
@@ -87,26 +87,11 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {children}
 
-        {/* Mobile Menu */}
-        <MobileMenu />
-
         {/* Scroll to Top Button */}
         <ScrollToTop />
 
-        {/* Performance Monitor */}
-        <PerformanceMonitor />
-
-        {/* Resource Preloader */}
-        <ResourcePreloader />
-
-        {/* Critical CSS */}
-        <CriticalCSS />
-
-        {/* Performance Optimizer */}
-        <PerformanceOptimizer />
-
-        {/* Scroll Handler */}
-        <ScrollHandler />
+        {/* Enhanced Smooth Scroll */}
+        <EnhancedSmoothScroll />
 
         {/* Service Worker Registration */}
         <Script

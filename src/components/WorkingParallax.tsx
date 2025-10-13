@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function WorkingParallax() {
   const backgroundRef = useRef<HTMLDivElement>(null);
@@ -34,16 +35,14 @@ export default function WorkingParallax() {
           transform: 'translate3d(0, 0, 0)'
         }}
       >
-        <img
+        <Image
           src="/assets/banner-hero.webp"
           alt="Mindotek Warehouse Facility"
-          className="w-full h-full object-cover"
-          style={{ 
-            width: '100%', 
-            height: '100%', 
-            objectFit: 'cover',
-            filter: 'brightness(0.8)'
-          }}
+          fill
+          className="object-cover brightness-80"
+          priority
+          quality={85}
+          sizes="100vw"
         />
       </div>
 

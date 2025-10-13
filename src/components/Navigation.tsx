@@ -56,15 +56,15 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-5">
           <div className="flex items-center">
-            <div className="">
+            <Link href="/" className="cursor-pointer">
               <Image
                 src="/assets/logo-mindotek.webp"
                 alt="Mindotek Logo"
-                className="w-60"
+                className="hidden lg:block w-60 hover:opacity-90 transition-opacity"
                 width={240}
                 height={40}
               />
-            </div>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}

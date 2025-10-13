@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 
 interface ContentItem {
@@ -67,13 +67,13 @@ export default function ImprovedStickyScroll({ content }: ImprovedStickyScrollPr
 interface ContentCardProps {
   item: ContentItem;
   index: number;
-  progress: any;
+  progress: MotionValue<number>;
   range: [number, number];
   targetScale: number;
   isActive: boolean;
 }
 
-function ContentCard({ item, index, progress, range, targetScale, isActive }: ContentCardProps) {
+function ContentCard({ item, index, progress, range, isActive }: ContentCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   
   // Smooth opacity transition

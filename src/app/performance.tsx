@@ -1,9 +1,17 @@
 'use client';
 
 import { useEffect } from 'react';
-import { onCLS, onFCP, onLCP, onTTFB, onINP } from 'web-vitals';
+import { onCLS, onFCP, onLCP, onTTFB, onINP, Metric } from 'web-vitals';
 
-export function reportWebVitals(metric: any) {
+interface PerformanceEntryWithProcessing extends PerformanceEntry {
+  processingStart: number;
+}
+
+interface PerformanceEntryWithValue extends PerformanceEntry {
+  value: number;
+}
+
+export function reportWebVitals(metric: Metric) {
   // Log to console in development
   if (process.env.NODE_ENV === 'development') {
     console.log('Web Vital:', metric);
@@ -32,11 +40,11 @@ export default function PerformanceMonitor() {
           if (entry.entryType === 'largest-contentful-paint') {
             console.log('LCP:', entry.startTime);
           }
-          if (entry.entryType === 'first-input') {
-            console.log('FID:', entry.processingStart - entry.startTime);
+          if (entry.entryType === 'first-input' && 'processingStart' in entry) {
+            console.log('FID:', (entry as PerformanceEntryWithProcessing).processingStart - entry.startTime);
           }
-          if (entry.entryType === 'layout-shift') {
-            console.log('CLS:', (entry as any).value);
+          if (entry.entryType === 'layout-shift' && 'value' in entry) {
+            console.log('CLS:', (entry as PerformanceEntryWithValue).value);
           }
         }
       });

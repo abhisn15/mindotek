@@ -10,6 +10,7 @@ interface Stat {
   suffix?: string;
   prefix?: string;
   icon?: React.ReactNode;
+  noComma?: boolean;
 }
 
 interface StatsCounterProps {
@@ -47,6 +48,7 @@ export default function StatsCounter({ stats }: StatsCounterProps) {
               suffix={stat.suffix}
               prefix={stat.prefix}
               duration={2}
+              noComma={stat.noComma}
             />
           </div>
           <div className="text-white/80 text-sm sm:text-base font-medium">

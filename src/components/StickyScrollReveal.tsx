@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 
 interface ContentItem {
@@ -46,14 +46,12 @@ export default function StickyScrollReveal({ content }: StickyScrollRevealProps)
 interface CardProps {
   item: ContentItem;
   index: number;
-  progress: any;
+  progress: MotionValue<number>;
   range: [number, number];
   totalItems: number;
 }
 
 function Card({ item, index, progress, range, totalItems }: CardProps) {
-  const isLast = index === totalItems - 1;
-  
   // Calculate opacity for smooth transitions
   const opacity = useTransform(progress, range, [0, 1]);
   const scale = useTransform(progress, range, [0.8, 1]);

@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   // Enable image optimization for better performance
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -29,7 +30,7 @@ const nextConfig = {
   output: 'standalone',
   
   // Webpack optimizations for better performance
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config: any, { dev, isServer }: { dev: boolean; isServer: boolean }) => {
     if (!dev && !isServer) {
       // Enable tree shaking and dead code elimination
       config.optimization = {
@@ -66,8 +67,7 @@ const nextConfig = {
     optimizePackageImports: ['framer-motion', 'lucide-react'],
     scrollRestoration: true,
     webpackBuildWorker: true,
-    optimizeCss: true,
-    gzipSize: true,
+    memoryBasedWorkersCount: true,
   },
   
   // Headers for security and performance

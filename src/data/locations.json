@@ -12,8 +12,8 @@
         "lat": 0.532556,
         "lng": 101.396639
       },
-      "mapUrl": "https://maps.app.goo.gl/example",
-      "iframeUrl": "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3989.6459729798207!2d101.39461947587124!3d0.532555599462236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMMKwMzEnNTcuMiJOIDEwMcKwMjMnNDkuOSJF!5e0!3m2!1sid!2sid!4v1760086841589!5m2!1sid!2sid"
+      "mapUrl": "https://www.google.com/maps/place/Pekanbaru,+Riau/@0.532556,101.396639,15z/data=!3m1!4b1!4m6!3m5!1s0x31d5a8d6e7c3c3c3:0x7c3c3c3c3c3c3c3c!8m2!3d0.532556!4d101.396639!16s%2Fm%2F0h4w4n5",
+      "iframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63890.53747839845!2d101.34310834863281!3d0.5287965999999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a8d6e7c3c3c3%3A0x7c3c3c3c3c3c3c3c!2sPekanbaru%2C%20Riau!5e0!3m2!1sen!2sid!4v1699123456789!5m2!1sen!2sid"
     },
     {
       "id": "tangerang-warehouse",
@@ -25,7 +25,7 @@
         "lat": -6.213646,
         "lng": 106.570918
       },
-      "mapUrl": "https://maps.app.goo.gl/example",
+      "mapUrl": "https://www.google.com/maps/place/PT+Tunas+Perkasa+Muda+Logistic+(+TPM+)/@-6.213646,106.570918,15z/data=!3m1!4b1!4m6!3m5!1s0x2e69ffdcb0ca4d5f:0x54dc0b61f3026b35!8m2!3d-6.213646!4d106.570918!16s%2Fg%2F11c0vj8x9q",
       "iframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3789931459833!2d106.57091757499028!3d-6.213645693774268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ffdcb0ca4d5f%3A0x54dc0b61f3026b35!2sPT%20Tunas%20Perkasa%20Muda%20Logistic%20(%20TPM%20)!5e0!3m2!1sid!2sid!4v1760086771294!5m2!1sid!2sid"
     },
     {
@@ -38,7 +38,7 @@
         "lat": 3.595196,
         "lng": 98.672223
       },
-      "mapUrl": "https://www.google.com/maps/place/0%C2%B031'57.2%22N+101%C2%B023'49.9%22E/@0.532504,101.397119,3a,77.5y,47.86h,91.2t/data=!3m7!1e1!3m5!1sFqPYzP2cQKcUshtJmA_8CQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1.1952382382399236%26panoid%3DFqPYzP2cQKcUshtJmA_8CQ%26yaw%3D47.85813240720279!7i16384!8i8192!4m4!3m3!8m2!3d0.53255!4d101.39718?entry=ttu&g_ep=EgoyMDI1MTAwNi4wIKXMDSoASAFQAw%3D%3D",
+      "mapUrl": "https://www.google.com/maps/place/Medan,+North+Sumatra/@3.595196,98.672223,15z/data=!3m1!4b1!4m6!3m5!1s0x30312b8c9c9c9c9c:0x8c8c8c8c8c8c8c8c!8m2!3d3.595196!4d98.672223!16s%2Fm%2F0h4w4n6",
       "iframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.567890123!2d98.672223!3d3.595196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312b8c9c9c9c9c%3A0x8c8c8c8c8c8c8c8c!2sMedan%20Baru%20Warehouse!5e0!3m2!1sen!2sid!4v1699123456790!5m2!1sen!2sid"
     }
   ]

@@ -6,20 +6,6 @@ export default function PerformanceOptimizer() {
   useEffect(() => {
     // Optimize main thread performance
     const optimizeMainThread = () => {
-      // Break up long tasks using setTimeout
-      const breakUpLongTasks = () => {
-        const start = performance.now();
-        
-        const checkTime = () => {
-          if (performance.now() - start > 5) {
-            // If we've been running for more than 5ms, yield to the browser
-            return new Promise(resolve => setTimeout(resolve, 0));
-          }
-          return Promise.resolve();
-        };
-
-        return checkTime;
-      };
 
       // Optimize scroll performance
       let scrollTimeout: NodeJS.Timeout;

@@ -23,12 +23,11 @@ export function Typewriter({ text, className = '', speed = 100 }: TypewriterProp
     }
   }, [currentIndex, text, speed]);
 
+  // Blinking cursor animation: if not finished, stick after text; if finished, keep blinking at the end
   return (
     <div className={className}>
       {displayedText}
-      {currentIndex < text.length && (
-        <span className="animate-pulse text-red-600">|</span>
-      )}
+      <span className="animate-pulse text-red-600">|</span>
     </div>
   );
 }

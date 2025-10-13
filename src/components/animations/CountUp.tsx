@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
+import { useInView, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
 interface CountUpProps {
@@ -9,6 +9,7 @@ interface CountUpProps {
   suffix?: string;
   prefix?: string;
   className?: string;
+  noComma?: boolean; // Option to disable comma formatting
 }
 
 export default function CountUp({
@@ -17,6 +18,7 @@ export default function CountUp({
   suffix = '',
   prefix = '',
   className = '',
+  noComma = false,
 }: CountUpProps) {
   const ref = useRef(null);
   const motionValue = useMotionValue(0);
@@ -35,13 +37,16 @@ export default function CountUp({
   useEffect(() => {
     const unsubscribe = springValue.on('change', (latest) => {
       if (ref.current) {
+        const formattedValue = noComma 
+          ? Math.floor(latest).toString()
+          : Math.floor(latest).toLocaleString();
         (ref.current as HTMLElement).textContent = 
-          prefix + Math.floor(latest).toLocaleString() + suffix;
+          prefix + formattedValue + suffix;
       }
     });
 
     return unsubscribe;
-  }, [springValue, prefix, suffix]);
+  }, [springValue, prefix, suffix, noComma]);
 
   return <span ref={ref} className={className}>0</span>;
 }

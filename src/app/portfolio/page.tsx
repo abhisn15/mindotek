@@ -1,26 +1,52 @@
-import { Metadata } from 'next';
-import Navigation from '@/components/Navigation';
-import MobileMenu from '@/components/MobileMenu';
+'use client';
+
+import dynamic from 'next/dynamic';
 import Footer from '@/components/Footer';
-import PortfolioGrid from '@/components/PortfolioGrid';
+import LazyProjectGrid from '@/components/LazyProjectGrid';
+import FilterModal from '@/components/FilterModal';
 import portfolioList from '@/data/portfolio-list.json';
 import Link from 'next/link';
+// Image import removed as it's no longer used
+import { useState, useMemo } from 'react';
 
-export const metadata: Metadata = {
-  title: 'Portfolio - Our Projects | Mindotek',
-  description: 'Explore our portfolio of successful projects including Warehouse Management Systems, logistics solutions, and custom software development.',
-  keywords: 'portfolio, projects, WMS, logistics software, warehouse management, Mindotek',
-};
+const PortfolioStatsCounter = dynamic(() => import('@/components/PortfolioStatsCounter'), {
+  loading: () => <div className="text-4xl sm:text-5xl font-bold mb-2 animate-pulse text-gray-400">0</div>,
+});
 
 export default function PortfolioPage() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeFilter, setActiveFilter] = useState('All Projects');
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+
+  const filters = ['All Projects', 'Software Development', 'Logistics Solutions', 'WMS'];
+
+  const filteredProjects = useMemo(() => {
+    let filtered = portfolioList;
+
+    // Filter by category
+    if (activeFilter !== 'All Projects') {
+      filtered = filtered.filter(project => 
+        project.category.toLowerCase().includes(activeFilter.toLowerCase()) ||
+        project.tags.some(tag => tag.toLowerCase().includes(activeFilter.toLowerCase()))
+      );
+    }
+
+    // Filter by search term
+    if (searchTerm) {
+      filtered = filtered.filter(project =>
+        project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+    }
+
+    return filtered;
+  }, [searchTerm, activeFilter]);
   return (
     <>
-      <Navigation />
-      <MobileMenu />
-      
       <main className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white py-20 pt-32 md:pt-24">
+        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-xl font-bold text-white pb-20 pt-4 lg:pt-8 md:pt-8">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +56,7 @@ export default function PortfolioPage() {
               Home
             </Link>
             <span className="text-gray-600">/</span>
-            <span className="text-white">Portfolio</span>
+            <span className="text-red-400">Portfolio</span>
           </nav>
 
           <div className="text-center max-w-4xl mx-auto">
@@ -42,55 +68,76 @@ export default function PortfolioPage() {
             </p>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto">
-            <div className="text-center">
-              <p className="text-4xl sm:text-5xl font-bold mb-2">5+</p>
-              <p className="text-gray-400">Years Experience</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl sm:text-5xl font-bold mb-2">50+</p>
-              <p className="text-gray-400">Projects Completed</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl sm:text-5xl font-bold mb-2">100+</p>
-              <p className="text-gray-400">Happy Clients</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl sm:text-5xl font-bold mb-2">99%</p>
-              <p className="text-gray-400">Client Satisfaction</p>
-            </div>
+          {/* Stats with Counter Animation */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto">
+            <PortfolioStatsCounter metric="5+" description="Years Experience" index={0} />
+            {/* <PortfolioStatsCounter metric="1" description="Project Completed" index={1} /> */}
+            <PortfolioStatsCounter metric="7+" description="Warehouse Locations" index={2} />
+            <PortfolioStatsCounter metric="99%" description="System Uptime" index={3} />
           </div>
         </div>
       </section>
 
-      {/* Filter Section */}
-      <section className="py-12 border-b border-gray-200 sticky top-20 bg-white z-40">
+      {/* Search and Filter Section */}
+      <section className="py-12 border-b border-gray-200 sticky top-0 bg-white z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex flex-wrap gap-3">
-              <button className="px-6 py-2 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full font-medium hover:shadow-lg transition-all duration-300">
-                All Projects
-              </button>
-              <button className="px-6 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors duration-300">
-                Software Development
-              </button>
-              <button className="px-6 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors duration-300">
-                Logistics Solutions
-              </button>
-              <button className="px-6 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors duration-300">
-                WMS
+          {/* Search Bar with Filter Button */}
+          <div className="mb-6">
+            <div className="flex gap-3 items-center">
+              <div className="relative flex-1 max-w-md">
+                <input
+                  type="text"
+                  placeholder="Search projects..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full px-4 py-3 pl-12 pr-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
+                />
+                <svg
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+              
+              {/* Filter Button */}
+              <button
+                onClick={() => setIsFilterModalOpen(true)}
+                className="px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl transition-all duration-300 group"
+              >
+                <svg className="w-5 h-5 text-gray-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                </svg>
               </button>
             </div>
-            <p className="text-gray-600">
-              <span className="font-semibold text-gray-900">{portfolioList.length}</span> {portfolioList.length === 1 ? 'Project' : 'Projects'} Found
+          </div>
+
+          <div className="flex items-center justify-between">
+            {/* Active Filter Display */}
+            <div className="flex items-center gap-2">
+              <span className="text-gray-600 text-sm">Filter:</span>
+              <span className="px-3 py-1 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full text-sm font-medium">
+                {activeFilter}
+              </span>
+            </div>
+            
+            {/* Results Counter */}
+            <p className="text-gray-600 text-sm lg:text-base">
+              <span className="font-semibold text-gray-900">{filteredProjects.length}</span> {filteredProjects.length === 1 ? 'Project' : 'Projects'} Found
             </p>
           </div>
         </div>
       </section>
 
-      {/* Portfolio Grid */}
-      <PortfolioGrid projects={portfolioList} />
+      {/* Portfolio Grid with Lazy Loading */}
+      <LazyProjectGrid projects={filteredProjects} searchTerm={searchTerm} />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-gray-900 to-black text-white">
@@ -118,6 +165,15 @@ export default function PortfolioPage() {
         </div>
       </section>
       </main>
+
+      {/* Filter Modal */}
+      <FilterModal
+        isOpen={isFilterModalOpen}
+        onClose={() => setIsFilterModalOpen(false)}
+        filters={filters}
+        activeFilter={activeFilter}
+        onFilterChange={setActiveFilter}
+      />
 
       <Footer />
     </>

@@ -1,13 +1,15 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import Navigation from '@/components/Navigation';
-import MobileMenu from '@/components/MobileMenu';
+// Image import removed as it's no longer used
 import Footer from '@/components/Footer';
 import portfolioData from '@/data/portfolio-wms.json';
 
 const PortfolioFeatures = dynamic(() => import('@/components/PortfolioFeatures'), {
   loading: () => <div className="h-96 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div></div>,
+});
+const PortfolioCounter = dynamic(() => import('@/components/PortfolioCounter'), {
+  loading: () => <div className="h-48 animate-pulse bg-white/10 rounded-2xl"></div>,
 });
 
 export const metadata: Metadata = {
@@ -24,12 +26,10 @@ export const metadata: Metadata = {
 export default function WMSPortfolioPage() {
   return (
     <>
-      <Navigation />
-      <MobileMenu />
-      
       <main className="min-h-screen bg-white">
+
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white py-20 pt-32 md:pt-24">
+        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-xl font-bold text-white py-20">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
@@ -42,7 +42,7 @@ export default function WMSPortfolioPage() {
               Portfolio
             </Link>
             <span className="text-gray-600">/</span>
-            <span className="text-white">WMS</span>
+            <span className="text-red-500">WMS</span>
           </nav>
 
           <div className="max-w-4xl">
@@ -110,7 +110,7 @@ export default function WMSPortfolioPage() {
               Technologies Used
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Built with modern, scalable technologies for optimal performance
+              Built with proven, reliable technologies using PHP Native & CodeIgniter 3 Framework
             </p>
           </div>
 
@@ -141,13 +141,12 @@ export default function WMSPortfolioPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {portfolioData.results.map((result, index) => (
-              <div
+              <PortfolioCounter
                 key={index}
-                className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20"
-              >
-                <p className="text-5xl sm:text-6xl font-bold mb-4">{result.metric}</p>
-                <p className="text-lg text-red-100">{result.description}</p>
-              </div>
+                metric={result.metric}
+                description={result.description}
+                index={index}
+              />
             ))}
           </div>
         </div>

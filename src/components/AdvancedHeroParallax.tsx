@@ -11,10 +11,6 @@ export default function AdvancedHeroParallax() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
-      const windowHeight = window.innerHeight;
-      
-      // Calculate scroll progress (0 to 1)
-      const scrollProgress = Math.min(scrollTop / windowHeight, 1);
       
       // Different parallax speeds for different layers
       if (backgroundRef.current) {

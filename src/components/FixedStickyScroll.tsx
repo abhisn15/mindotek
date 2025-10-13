@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 
 interface ContentItem {
@@ -65,12 +65,12 @@ export default function FixedStickyScroll({ content }: FixedStickyScrollProps) {
 interface ContentCardProps {
   item: ContentItem;
   index: number;
-  progress: any;
+  progress: MotionValue<number>;
   range: [number, number];
   isActive: boolean;
 }
 
-function ContentCard({ item, index, progress, range, isActive }: ContentCardProps) {
+function ContentCard({ item, index, progress, range }: ContentCardProps) {
   // Simple opacity transition without scale to prevent overlapping
   const opacity = useTransform(progress, range, [0, 1]);
   const smoothOpacity = useSpring(opacity, {

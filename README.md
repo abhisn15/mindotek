@@ -26,6 +26,8 @@ Website company profile modern untuk **PT. Logamindo Teknologi Indonesia (Mindot
 - 🔍 **SEO Ready**: Comprehensive meta tags & structured data
 - ♿ **Accessible**: WCAG 2.1 AA compliant
 - 🚀 **PWA Ready**: Progressive Web App capabilities
+- 🗺️ **Interactive Maps**: Google Maps integration untuk warehouse locations
+- 📊 **Dynamic Portfolio**: Animated counters & lazy loading
 
 ---
 
@@ -39,31 +41,23 @@ Website company profile modern untuk **PT. Logamindo Teknologi Indonesia (Mindot
 - **Performance Optimized**: Throttled scroll events
 - **Visual Depth**: 3D effect yang engaging
 
-```javascript
-// 4 Parallax Layers:
-- Background Image: Speed 0.4
-- Dark Overlay: Speed 0.2
-- Gradient Overlay: Speed 0.1
-- Floating Elements: Speed 0.05 + rotation
-```
+#### **2. Smooth Scroll dengan Lenis**
+- **Professional Smooth Scroll**: GSAP-like smooth scrolling
+- **Momentum-based**: Natural deceleration
+- **Performance Optimized**: Hardware accelerated
+- **Touch Friendly**: Optimized untuk mobile devices
 
-#### **2. Sticky Navigation**
-- **Desktop**: Transparent → White on scroll
-- **Mobile**: Full-screen menu dengan logo
-- **Active Indicators**: Highlight untuk section aktif
-- **Smooth Scroll**: Animasi yang halus ke setiap section
+#### **3. Interactive Portfolio**
+- **Dynamic Statistics**: Animated counters dengan Framer Motion
+- **Lazy Loading**: Skeleton loading untuk project cards
+- **Search & Filter**: Real-time search dengan modal filter
+- **Responsive Grid**: Perfect di semua screen sizes
 
-#### **3. Hero Section**
-- **Dynamic Background**: Parallax effect pada banner-hero.webp
-- **Typewriter Effect**: Animated text untuk company name
-- **Glassmorphism**: Modern blur effects
-- **Responsive**: Perfect di semua screen sizes
-
-#### **4. Interactive Animations**
-- **Fade In Views**: Scroll-triggered animations
-- **Count Up Stats**: Animated statistics
-- **Hover Effects**: Interactive cards
-- **Stagger Animations**: Sequential element entrance
+#### **4. Google Maps Integration**
+- **Warehouse Locations**: Interactive map dengan 7+ locations
+- **Location Selector**: Dynamic location switching
+- **Mobile Optimized**: Touch-friendly interface
+- **Professional Styling**: Consistent dengan brand theme
 
 ### **⚡ Performance**
 
@@ -72,54 +66,17 @@ Website company profile modern untuk **PT. Logamindo Teknologi Indonesia (Mindot
 - **Lazy Loading**: Defer offscreen images
 - **Responsive Sizes**: Optimized for each device
 - **Blur Placeholders**: Smooth loading experience
-- **Cache Control**: 1 year cache for static assets
 
 #### **Code Optimization**
 - **Dynamic Imports**: Heavy components loaded on-demand
 - **Tree Shaking**: Remove unused code
-- **SWC Minification**: Fastest minification
 - **Code Splitting**: Vendor & common chunks
-- **Webpack Config**: Advanced optimization
+- **Memory Optimized**: Reduced bundle size
 
 #### **Performance Monitoring**
 - **Web Vitals**: LCP, FID, INP, CLS, FCP, TTFB
-- **Resource Preloader**: Critical resources
 - **Performance Optimizer**: Reduce main-thread blocking
-- **Service Worker**: Offline capabilities
-
-### **🔍 SEO & Analytics**
-
-#### **SEO Optimization**
-- **Meta Tags**: Complete meta information
-- **Open Graph**: Social media optimization
-- **Twitter Cards**: Twitter sharing
-- **Structured Data**: JSON-LD schema
-  - Organization schema
-  - Breadcrumb schema
-  - Service schema
-- **Sitemap**: Dynamic sitemap.xml
-- **Robots.txt**: Proper crawl instructions
-
-#### **Analytics Integration**
-- **Google Analytics**: User behavior tracking
-- **Microsoft Clarity**: Session recordings
-- **Web Vitals**: Performance monitoring
-- **Custom Events**: Track user interactions
-
-### **📱 Mobile Excellence**
-
-#### **Mobile-First Design**
-- **Touch Optimized**: Large touch targets
-- **Responsive Layout**: Perfect on all screens
-- **Fast on 3G**: Optimized for slow connections
-- **Mobile Menu**: Full-screen navigation
-- **Swipe Gestures**: Natural interactions
-
-#### **Progressive Web App (PWA)**
-- **Web Manifest**: App-like experience
-- **Service Worker**: Offline support
-- **Cache Strategy**: Fast repeat visits
-- **Install Prompt**: Add to home screen
+- **Memory Management**: Optimized untuk production
 
 ---
 
@@ -132,7 +89,9 @@ React:           19.1.0 (Server & Client Components)
 TypeScript:      5.x (Type Safety)
 Styling:         Tailwind CSS 4 (Utility-First)
 Animations:      Framer Motion 12.23.22 (Smooth Animations)
-Icons:           Lucide React (Modern Icons)
+Smooth Scroll:   Lenis 1.3.11 (Professional Scroll)
+Maps:            Google Maps API
+Icons:           Custom SVG Icons
 Analytics:       web-vitals (Performance Monitoring)
 ```
 
@@ -180,7 +139,6 @@ npm start            # Start production server
 # Code Quality
 npm run lint         # Run ESLint
 npm run type-check   # Check TypeScript types
-npm run format       # Format code with Prettier
 
 # Analysis
 npm run analyze      # Analyze bundle size
@@ -202,39 +160,45 @@ mindotek/
 │   │   ├── globals.css               # Global styles
 │   │   ├── loading.tsx               # Loading state
 │   │   ├── not-found.tsx             # 404 page
-│   │   ├── performance.tsx           # Web Vitals monitoring
 │   │   ├── sitemap.ts                # Dynamic sitemap
-│   │   ├── services/                 # Services pages
-│   │   └── warehouse-locations/      # Location pages
+│   │   └── portfolio/                # Portfolio pages
+│   │       ├── page.tsx              # Portfolio listing
+│   │       └── wms/page.tsx          # WMS project detail
 │   │
 │   ├── components/                   # React Components
 │   │   ├── animations/               # Animation Components
-│   │   │   ├── PerformanceFadeIn.tsx # Optimized fade-in
 │   │   │   ├── CountUp.tsx           # Number counter
-│   │   │   └── HoverCard.tsx         # Interactive cards
+│   │   │   └── FadeIn.tsx            # Fade-in animation
+│   │   │
+│   │   ├── icons/                    # Custom Icons
+│   │   │   └── ProfessionalIcons.tsx # SVG icon components
 │   │   │
 │   │   ├── Navigation.tsx            # Desktop navigation
 │   │   ├── MobileMenu.tsx            # Mobile menu
-│   │   ├── HeroBackground.tsx        # Hero background wrapper
 │   │   ├── AdvancedHeroParallax.tsx  # Multi-layer parallax
-│   │   ├── WorkingParallax.tsx       # Simple parallax
 │   │   ├── StatsCounter.tsx          # Animated statistics
-│   │   ├── FeatureShowcase.tsx       # Feature grid
-│   │   ├── CTASection.tsx            # Call-to-action
+│   │   ├── PortfolioCounter.tsx      # Portfolio stats
+│   │   ├── PortfolioStatsCounter.tsx # Light theme stats
+│   │   ├── AnimatedProgressBar.tsx   # Progress bars
+│   │   ├── SimpleFadeIn.tsx          # Lightweight fade-in
+│   │   ├── FloatingIcons.tsx         # Background animations
+│   │   ├── Typewriter.tsx            # Typewriter effect
+│   │   ├── GoogleMap.tsx             # Maps integration
+│   │   ├── PortfolioCard.tsx         # Project cards
+│   │   ├── LazyProjectGrid.tsx       # Lazy loading grid
+│   │   ├── ProjectCardSkeleton.tsx   # Loading skeletons
+│   │   ├── FilterModal.tsx           # Filter modal
 │   │   ├── Footer.tsx                # Footer component
-│   │   ├── GoogleMap.tsx             # Map integration
 │   │   ├── ScrollToTop.tsx           # Scroll button
-│   │   ├── LazyImage.tsx             # Lazy loading images
-│   │   ├── LoadingSkeleton.tsx       # Loading states
-│   │   ├── ResourcePreloader.tsx     # Resource preloading
-│   │   ├── CriticalCSS.tsx           # Inline critical CSS
-│   │   ├── PerformanceOptimizer.tsx  # JS optimization
-│   │   └── ScrollHandler.tsx         # Smooth scroll
+│   │   ├── EnhancedSmoothScroll.tsx  # Smooth scroll
+│   │   └── CTASection.tsx            # Call-to-action
 │   │
 │   ├── data/                         # JSON Data Files
 │   │   ├── company.json              # Company information
 │   │   ├── services.json             # Services data
 │   │   ├── locations.json            # Warehouse locations
+│   │   ├── portfolio-list.json       # Portfolio projects
+│   │   ├── portfolio-wms.json        # WMS project data
 │   │   ├── wms.json                  # WMS features
 │   │   ├── vision-mission.json       # Vision & mission
 │   │   ├── kpi.json                  # KPI statistics
@@ -257,7 +221,9 @@ mindotek/
 │   │   ├── banner-hero.webp          # Hero background
 │   │   ├── logo-mindotek.webp        # Company logo
 │   │   ├── icon.webp                 # Favicon
-│   │   └── service-placeholder.svg   # Placeholder
+│   │   └── portfolio/                # Portfolio images
+│   │       ├── wms-*.webp            # WMS project images
+│   │       └── wms-*.png             # WMS project images (fallback)
 │   ├── robots.txt                    # Search engine rules
 │   ├── site.webmanifest              # PWA manifest
 │   └── sw.js                         # Service worker
@@ -267,7 +233,6 @@ mindotek/
 ├── tailwind.config.ts                # Tailwind config
 ├── postcss.config.mjs                # PostCSS config
 ├── eslint.config.mjs                 # ESLint config
-├── components.json                   # shadcn/ui config
 └── package.json                      # Dependencies & scripts
 ```
 
@@ -275,40 +240,40 @@ mindotek/
 
 ## 🎯 **Key Components**
 
-### **1. AdvancedHeroParallax**
-Multi-layer parallax effect untuk hero section:
-- 4 independent layers
-- Different scroll speeds
-- GPU accelerated transforms
-- Throttled scroll events
+### **1. EnhancedSmoothScroll**
+Professional smooth scrolling dengan Lenis:
+- Momentum-based scrolling
+- Hardware accelerated
+- Touch optimized
+- GSAP-like smoothness
 
 ```typescript
 // Usage
-import AdvancedHeroParallax from '@/components/AdvancedHeroParallax';
+import EnhancedSmoothScroll from '@/components/EnhancedSmoothScroll';
 
-<AdvancedHeroParallax />
+<EnhancedSmoothScroll />
 ```
 
-### **2. MobileMenu**
-Full-screen mobile navigation:
-- Active section detection
-- Smooth scroll to sections
-- Auto-close on navigation
-- Sticky header dengan logo
+### **2. GoogleMap**
+Interactive warehouse location map:
+- Dynamic location switching
+- Mobile responsive
+- Professional styling
+- Google Maps integration
 
-### **3. PerformanceFadeIn**
-Optimized fade-in animations:
-- Intersection Observer API
-- Direction control (up, down, left, right)
-- Stagger children animations
+### **3. PortfolioCounter**
+Animated statistics dengan Framer Motion:
+- Smooth number transitions
+- Scroll-triggered animations
+- Customizable formatting
 - Performance optimized
 
-### **4. LazyImage**
-Lazy loading images:
-- Intersection Observer
-- Blur placeholder
-- Progressive loading
-- Error handling
+### **4. LazyProjectGrid**
+Lazy loading portfolio grid:
+- Intersection Observer API
+- Skeleton loading states
+- Infinite scroll capability
+- Search & filter integration
 
 ---
 
@@ -323,9 +288,8 @@ Create `.env.local` file:
 NEXT_PUBLIC_SITE_URL=https://mindotek.com
 NEXT_PUBLIC_SITE_NAME="Mindotek - PT. Logamindo Teknologi Indonesia"
 
-# Analytics (Replace with your IDs)
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-NEXT_PUBLIC_CLARITY_ID=your_clarity_id
+# Google Maps API
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 
 # Contact Information
 NEXT_PUBLIC_CONTACT_EMAIL=contact@mindotek.com
@@ -349,16 +313,13 @@ Update JSON files in `src/data/`:
 - `company.json` - Company information
 - `services.json` - Services offered
 - `locations.json` - Warehouse locations
-- etc.
+- `portfolio-list.json` - Portfolio projects
 
 #### **3. Images**
 Replace files in `public/assets/`:
 - `logo-mindotek.webp` - Company logo
 - `banner-hero.webp` - Hero background
 - `icon.webp` - Favicon
-
-#### **4. Analytics**
-Uncomment scripts in `src/app/layout.tsx` and add your IDs.
 
 ---
 
@@ -391,6 +352,8 @@ CLS (Cumulative Layout Shift):     < 0.1   ✅
 - ✅ Resource preloading
 - ✅ Critical CSS inlining
 - ✅ Font optimization
+- ✅ Lazy loading
+- ✅ Skeleton loading states
 
 ---
 
@@ -415,13 +378,10 @@ vercel --prod
 npm run build
 ```
 
-#### **Deploy Static Export**
-Update `next.config.ts`:
-```typescript
-output: 'export'
+#### **Start Production Server**
+```bash
+npm start
 ```
-
-Then deploy the `out/` folder.
 
 ---
 
@@ -447,7 +407,6 @@ Then deploy the `out/` folder.
 - X-Content-Type-Options
 - Referrer-Policy
 - Permissions-Policy
-- Strict-Transport-Security (HSTS)
 
 ### **Best Practices**
 - No sensitive data in client code
@@ -455,28 +414,6 @@ Then deploy the `out/` folder.
 - Secure API endpoints
 - Input validation
 - XSS prevention
-
----
-
-## 📈 **Analytics & Monitoring**
-
-### **Google Analytics**
-- Page views
-- User behavior
-- Conversion tracking
-- Custom events
-
-### **Microsoft Clarity**
-- Session recordings
-- Heatmaps
-- User insights
-- Click tracking
-
-### **Web Vitals**
-- Core Web Vitals monitoring
-- Performance metrics
-- Real user monitoring (RUM)
-- Console logging in development
 
 ---
 
@@ -498,11 +435,6 @@ Font Family:    System font stack
 Headings:       Bold, large sizes
 Body:           Regular, readable sizes
 Monospace:      'Courier New', monospace
-```
-
-### **Spacing Scale**
-```
-4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px, 128px
 ```
 
 ### **Breakpoints**
@@ -570,7 +502,8 @@ Special thanks to:
 - **Vercel** - Hosting platform
 - **Framer Motion** - Smooth animations
 - **Tailwind CSS** - Utility-first CSS
-- **Lucide** - Beautiful icons
+- **Lenis** - Professional smooth scroll
+- **Google Maps** - Location services
 - **Open Source Community** - Inspiration & tools
 
 ---
