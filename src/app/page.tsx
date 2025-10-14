@@ -22,9 +22,12 @@ import visionMission from "@/data/vision-mission.json";
 import benefitsData from "@/data/customer-benefits.json";
 import servicesData from "@/data/services.json";
 import locationsData from "@/data/locations.json";
+import portfolioData from "@/data/portfolio-list.json";
 import SimpleFadeIn from "@/components/SimpleFadeIn";
 import Footer from "@/components/Footer";
 import MobileMenu from "@/components/MobileMenu";
+import Link from "next/link";
+import Image from "next/image";
 
 // Essential dynamic imports only - reduced for better performance
 const GoogleMap = dynamic(() => import("@/components/GoogleMap").then(mod => ({ default: mod.GoogleMap })), {
@@ -289,8 +292,11 @@ export default function Home() {
             </div>
 
             {/* Main Title */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-600 to-yellow-600 drop-shadow-sm">
-              Mindotek
+            <h1
+              className="tracking-tighter text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-600 to-yellow-600 drop-shadow-sm"
+              style={{ fontFamily: '"Century", serif' }}
+            >
+              MINDOTEK
             </h1>
 
             {/* Animated Tagline */}
@@ -932,6 +938,104 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Portfolio Section */}
+        <section
+          id="portfolio"
+          className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-white"
+        >
+          <div className="max-w-7xl mx-auto">
+            <SimpleFadeIn>
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
+                  Our Portfolio
+                </h2>
+                <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  Explore our cutting-edge technology solutions designed to transform warehouse and logistics operations
+                </p>
+              </div>
+            </SimpleFadeIn>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {portfolioData.map((project, index) => (
+                <SimpleFadeIn key={project.id} delay={index * 0.1}>
+                  <Link href={project.link}>
+                    <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-red-300 cursor-pointer hover:-translate-y-2">
+                      {/* Project Image */}
+                      <div className="relative h-64 overflow-hidden bg-gradient-to-br from-red-50 to-orange-50">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        {/* Year Badge */}
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
+                          <span className="text-sm font-bold text-red-600">{project.year}</span>
+                        </div>
+
+                        {/* View Details on Hover */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="bg-white text-red-600 px-6 py-3 rounded-full font-semibold flex items-center gap-2">
+                            <span>View Details</span>
+                            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Project Info */}
+                      <div className="p-6">
+                        <div className="mb-3">
+                          <span className="inline-block px-3 py-1 bg-red-100 text-red-600 text-xs font-semibold rounded-full">
+                            {project.category}
+                          </span>
+                        </div>
+                        
+                        <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-900 group-hover:text-red-600 transition-colors">
+                          {project.title}
+                        </h3>
+                        
+                        <p className="text-gray-600 mb-4 leading-relaxed">
+                          {project.description}
+                        </p>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-2">
+                          {project.tags.map((tag, i) => (
+                            <span
+                              key={i}
+                              className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full group-hover:bg-red-50 group-hover:text-red-600 transition-colors"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </SimpleFadeIn>
+              ))}
+            </div>
+
+            {/* View All Portfolio Button */}
+            <SimpleFadeIn delay={0.3}>
+              <div className="text-center mt-12">
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center justify-center bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-4 rounded-2xl font-semibold hover:from-red-700 hover:to-red-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                  <span>View All Projects</span>
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Link>
+              </div>
+            </SimpleFadeIn>
+          </div>
+        </section>
 
         {/* Legality Section
         <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-br from-red-50/30 via-white to-orange-50/30">

@@ -6,7 +6,6 @@ const DYNAMIC_CACHE = 'mindotek-dynamic-v2';
 const urlsToCache = [
   '/',
   '/assets/logo-mindotek.webp',
-  '/assets/banner-hero.png',
   '/assets/icon.webp',
   '/globals.css',
   '/_next/static/css/',

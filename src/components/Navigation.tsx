@@ -12,7 +12,7 @@ export default function Navigation() {
     "vision-mission",
     "services",
     "locations",
-    "wms",
+    "portfolio",
     "contact",
   ];
   const activeSection = useActiveSection(sectionIds);
@@ -43,7 +43,7 @@ export default function Navigation() {
     { id: "vision-mission", label: "Vision" },
     { id: "services", label: "Services" },
     { id: "locations", label: "Locations" },
-    { id: "portfolio", label: "Portfolio", link: "/portfolio" },
+    { id: "portfolio", label: "Portfolio" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -58,7 +58,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="cursor-pointer">
               <Image
-                src="/assets/logo-mindotek.webp"
+                src={isScrolled ? "/assets/logo-mindotek-black.webp" : "/assets/logo-mindotek-white.webp"}
                 alt="Mindotek Logo"
                 className="hidden lg:block w-60 hover:opacity-90 transition-opacity"
                 width={240}
@@ -69,40 +69,21 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            {menuItems.map((item) => {
-              // Check if item has external link
-              if (item.link) {
-                return (
-                  <Link
-                    key={item.id}
-                    href={item.link}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative ${
-                      isScrolled 
-                        ? "text-gray-700 hover:bg-red-50 hover:text-red-600"
-                        : "text-white hover:bg-white/20 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              }
-              
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative ${
-                    isActive(item.id)
-                      ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
-                      : isScrolled 
-                        ? "text-gray-700 hover:bg-red-50 hover:text-red-600"
-                        : "text-white hover:bg-white/20 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
+            {menuItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative ${
+                  isActive(item.id)
+                    ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
+                    : isScrolled 
+                      ? "text-gray-700 hover:bg-red-50 hover:text-red-600"
+                      : "text-white hover:bg-white/20 hover:text-white"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>

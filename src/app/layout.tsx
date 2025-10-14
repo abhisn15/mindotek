@@ -1,9 +1,17 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Script from 'next/script';
+import { Gothic_A1 } from 'next/font/google';
 // MobileMenu is used globally in the app
 import ScrollToTop from '@/components/ScrollToTop';
 import EnhancedSmoothScroll from '@/components/EnhancedSmoothScroll';
+
+const gothicA1 = Gothic_A1({
+  weight: ['300', '400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-gothic-a1',
+});
 
 export const metadata: Metadata = {
   title: 'Mindotek – PT. Logamindo Teknologi Indonesia | TPM Group Company Profile',
@@ -84,7 +92,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
-      <body className="font-sans antialiased">
+      <body className={`${gothicA1.variable} font-sans antialiased`}>
         {children}
 
         {/* Scroll to Top Button */}

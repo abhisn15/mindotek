@@ -5,7 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const getMenuItems = (isPortfolioPage: boolean) => {
+type MenuItem = {
+  label: string;
+  link: string;
+  id: string;
+  isExternal?: boolean;
+};
+
+const getMenuItems = (isPortfolioPage: boolean): MenuItem[] => {
   if (isPortfolioPage) {
     return [
       { label: "Home", link: "/", id: "home", isExternal: true },
@@ -22,7 +29,7 @@ const getMenuItems = (isPortfolioPage: boolean) => {
     { label: "Vision", link: "#vision-mission", id: "vision-mission" },
     { label: "Services", link: "#services", id: "services" },
     { label: "Locations", link: "#locations", id: "locations" },
-    { label: "Portfolio", link: "/portfolio", id: "portfolio", isExternal: true },
+    { label: "Portfolio", link: "#portfolio", id: "portfolio" },
     { label: "Contact", link: "#contact", id: "contact" },
   ];
 };
@@ -67,14 +74,17 @@ export default function MobileMenu() {
     observerRef.current = new window.IntersectionObserver(callback, observerOptions);
 
     // Clean up previous before setting up new
-    const menuItems = getMenuItems(isPortfolioPage).filter(item => !item.isExternal);
+    const menuItems = getMenuItems(isPortfolioPage);
     const elements: HTMLElement[] = [];
 
     menuItems.forEach((item) => {
-      const element = document.getElementById(item.id);
-      if (element) {
-        observerRef.current!.observe(element);
-        elements.push(element);
+      // Only observe non-external items
+      if (!item.isExternal) {
+        const element = document.getElementById(item.id);
+        if (element) {
+          observerRef.current!.observe(element);
+          elements.push(element);
+        }
       }
     });
 
@@ -136,7 +146,7 @@ export default function MobileMenu() {
             {/* Only hide logo when menu open */}
             {!isOpen && (
               <Image
-                src="/assets/logo-mindotek.webp"
+                src={isScrolled ? "/assets/logo-mindotek-black.webp" : "/assets/logo-mindotek-white.webp"}
                 alt="Mindotek Logo"
                 className="w-40 h-auto"
                 width={160}
@@ -200,7 +210,7 @@ export default function MobileMenu() {
                 <div className="flex items-center">
                   <div className="mr-3">
                     <Image
-                      src="/assets/logo-mindotek.webp"
+                      src="/assets/logo-mindotek-black.webp"
                       alt="Mindotek Logo"
                       className="w-60"
                       width={240}

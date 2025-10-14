@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="block mb-4">
               <Image
-                src="/assets/logo-mindotek.webp"
+                src="/assets/logo-mindotek-white.webp"
                 alt="Mindotek Logo"
                 width={180}
                 height={30}
