@@ -521,7 +521,7 @@ Additional documentation:
 
 <div align="center">
 
-**Made with ❤️ by TPM Group**
+**Made with ❤️ by Abhi From TPM Group**
 
 *Quality & Safety - Excellence Since 2018*
 
