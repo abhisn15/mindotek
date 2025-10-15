@@ -89,23 +89,6 @@ function FeatureSection({ item, index }: FeatureSectionProps) {
           <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl lg:rounded-3xl pointer-events-none"></div>
         </div>
 
-        {/* Floating elements - hidden on mobile for cleaner look */}
-        <div className="hidden lg:flex absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl shadow-2xl items-center justify-center">
-          <svg
-            className="w-12 h-12 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </div>
-
         {/* Decorative elements - hidden on mobile */}
         <div className="hidden lg:block absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-orange-400 to-red-400 rounded-full opacity-60"></div>
         <div className="hidden lg:block absolute top-1/2 -right-8 w-6 h-6 bg-gradient-to-br from-red-400 to-orange-400 rounded-full opacity-40"></div>
