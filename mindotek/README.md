@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Mindotek Logo](public/assets/logo-mindotek.webp)
+![Mindotek Logo](public/assets/logo-mindotek-white.webp)
 
 **Modern Company Profile Website**
 
