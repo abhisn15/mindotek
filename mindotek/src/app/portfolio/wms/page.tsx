@@ -29,20 +29,20 @@ export default function WMSPortfolioPage() {
       <main className="min-h-screen bg-white">
 
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-xl font-bold text-white py-20 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-xl font-bold text-white py-20">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm mb-8 overflow-x-auto">
-            <Link href="/" className="text-gray-400 hover:text-white transition-colors whitespace-nowrap">
+          <nav className="flex items-center gap-2 text-sm mb-8">
+            <Link href="/" className="text-gray-400 hover:text-white transition-colors">
               Home
             </Link>
             <span className="text-gray-600">/</span>
-            <Link href="/portfolio" className="text-gray-400 hover:text-white transition-colors whitespace-nowrap">
+            <Link href="/portfolio" className="text-gray-400 hover:text-white transition-colors">
               Portfolio
             </Link>
             <span className="text-gray-600">/</span>
-            <span className="text-red-500 whitespace-nowrap">WMS</span>
+            <span className="text-red-500">WMS</span>
           </nav>
 
           <div className="max-w-4xl">
@@ -69,10 +69,10 @@ export default function WMSPortfolioPage() {
             </p>
 
             {/* Meta Info */}
-            <div className="grid sm:grid-cols-3 gap-4 sm:gap-8 py-8 border-t border-gray-700">
+            <div className="grid sm:grid-cols-3 gap-8 py-8 border-t border-gray-700">
               <div>
                 <p className="text-sm text-gray-500 mb-2">Client</p>
-                <p className="text-white font-semibold text-sm sm:text-base">{portfolioData.client}</p>
+                <p className="text-white font-semibold">{portfolioData.client}</p>
               </div>
               <div>
                 <p className="text-sm text-gray-500 mb-2">Year</p>
@@ -84,12 +84,12 @@ export default function WMSPortfolioPage() {
               </div>
             </div>
 
-            {/* Tags - Fixed overflow */}
-            <div className="flex flex-wrap gap-2 mt-8 overflow-hidden">
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mt-8">
               {portfolioData.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 bg-white/10 backdrop-blur-sm text-white text-xs sm:text-sm rounded-full border border-white/20 whitespace-nowrap flex-shrink-0"
+                  className="px-3 py-1 bg-white/10 backdrop-blur-sm text-white text-sm rounded-full border border-white/20"
                 >
                   {tag}
                 </span>
@@ -103,7 +103,7 @@ export default function WMSPortfolioPage() {
         <PortfolioFeatures content={portfolioData.content} />
 
       {/* Technologies Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -114,13 +114,13 @@ export default function WMSPortfolioPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4 overflow-hidden">
+          <div className="flex flex-wrap justify-center gap-4">
             {portfolioData.technologies.map((tech, index) => (
               <div
                 key={index}
-                className="px-4 sm:px-6 py-3 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex-shrink-0"
+                className="px-6 py-3 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100"
               >
-                <span className="text-gray-800 font-medium text-sm sm:text-base whitespace-nowrap">{tech}</span>
+                <span className="text-gray-800 font-medium">{tech}</span>
               </div>
             ))}
           </div>
