@@ -1,0 +1,30 @@
+{
+  "name": "Mindotek - PT. Logamindo Teknologi Indonesia",
+  "short_name": "Mindotek",
+  "description": "Leading logistics and warehousing company in Indonesia providing comprehensive supply chain solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ED3F27",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/icon.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logo-mindotek.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["logistics", "business", "warehousing"],
+  "lang": "en-ID",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}
+

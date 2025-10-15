@@ -1,0 +1,92 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useActiveSection } from "@/hooks/useActiveSection";
+import { useState, useEffect } from "react";
+
+export default function Navigation() {
+  const sectionIds = [
+    "hero",
+    "company",
+    "vision-mission",
+    "services",
+    "locations",
+    "portfolio",
+    "contact",
+  ];
+  const activeSection = useActiveSection(sectionIds);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const isActive = (sectionId: string) => activeSection === sectionId;
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const menuItems = [
+    { id: "hero", label: "Home" },
+    { id: "company", label: "About Us" },
+    { id: "vision-mission", label: "Vision" },
+    { id: "services", label: "Services" },
+    { id: "locations", label: "Locations" },
+    { id: "portfolio", label: "Portfolio" },
+    { id: "contact", label: "Contact" },
+  ];
+
+  return (
+    <nav className={`hidden md:block fixed top-0 w-full transition-all duration-300 z-50 ${
+      isScrolled 
+        ? 'bg-white/65 backdrop-blur-md shadow-lg' 
+        : 'bg-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-5">
+          <div className="flex items-center">
+            <Link href="/" className="cursor-pointer">
+              <Image
+                src={isScrolled ? "/assets/logo-mindotek-black.webp" : "/assets/logo-mindotek-white.webp"}
+                alt="Mindotek Logo"
+                className="hidden lg:block w-60 hover:opacity-90 transition-opacity"
+                width={240}
+                height={40}
+              />
+            </Link>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-1">
+            {menuItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative ${
+                  isActive(item.id)
+                    ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
+                    : isScrolled 
+                      ? "text-gray-700 hover:bg-red-50 hover:text-red-600"
+                      : "text-white hover:bg-white/20 hover:text-white"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}

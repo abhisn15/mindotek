@@ -1,0 +1,44 @@
+
+/* Critical CSS for above-the-fold content */
+.hero-section {
+  background: linear-gradient(135deg, #fef2f2 0%, #ffffff 50%, #fff7ed 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 50;
+}
+
+.logo {
+  font-weight: bold;
+  background: linear-gradient(45deg, #dc2626, #b91c1c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduce layout shift */
+.hero-section h1 {
+  min-height: 2em;
+}
+
+.hero-section p {
+  min-height: 1.5em;
+}

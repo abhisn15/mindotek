@@ -1,0 +1,38 @@
+[
+  {
+    "id": "warehousing",
+    "title": "Warehousing",
+    "slug": "warehousing",
+    "summary": "Comprehensive warehouse rental services across Indonesia with full HR, racking, safety, and WMS support for all project requirements.",
+    "details": "We provide warehouse rental services in various locations according to project requirements throughout Indonesia. We also provide human resources and racking according to the type of project size and material capacity.\n\nWe can fulfill the needs of warehouse tools such as forklift, handpallet, trolley and computers suitable to customer needs. Besides that, we also prioritize safety by providing safety signage, first aid, vest and helmet to support our activities. For security purposes we provide CCTV and fire extinguishers.\n\nWe have a software Warehouse Management System (WMS) that we can develop based on the customer business process which developed by our in-house IT engineering division. Our system can monitor inbound, outbound, inventory and material aging.\n\nWe also provide value added services such as packaging, kitting, palletizing and labelling so that material are properly recorded and arranged.",
+    "features": ["Complete warehouse facilities", "Professional HR support", "Advanced security systems", "Custom WMS development", "Value-added services"],
+    "image": "/assets/warehouse-interior.jpg"
+  },
+  {
+    "id": "transport-domestic",
+    "title": "Transport Domestic",
+    "slug": "transport-domestic",
+    "summary": "End-to-end domestic distribution via air, sea, and land—including remote island access with optimized routing.",
+    "details": "We can provide material distribution services throughout Indonesia by air, sea and land transport. Distribution of material are covered from warehouse to warehouse or warehouse to site as per customer requested.\n\nIn some cases in the project delivery, we also provide some additional services such as usage of boat for certain areas or remote islands. We will optimize the use of vehicle capacity to reduce transportation cost by maximizing routes to catch up on time delivery.",
+    "features": ["Multi-modal transport", "Island coverage", "Route optimization", "Cost efficiency", "Timely delivery"],
+    "image": "/assets/transport-logistics.jpg"
+  },
+  {
+    "id": "management-services",
+    "title": "Management Services",
+    "slug": "management-services",
+    "summary": "Expert logistics consulting for warehousing optimization, fleet management, and delivery planning.",
+    "details": "Services that we provide are include logistics consulting regarding logistic business process in warehousing, space requirements and fleet types usage with delivery timeline.",
+    "features": ["Process consulting", "Space optimization", "Fleet management", "Timeline planning", "Cost analysis"],
+    "image": "/assets/management-consulting.jpg"
+  },
+  {
+    "id": "integrated-solution",
+    "title": "Integrated Solution",
+    "slug": "integrated-solution",
+    "summary": "Complete end-to-end logistics package combining warehousing, transport, and all value-added services.",
+    "details": "We provide services such as end to end logistic including warehousing rental, warehouse management and transportation also value-added services that make up total logistic service package.",
+    "features": ["End-to-end solutions", "Warehouse management", "Transportation coordination", "Value-added services", "Complete package"],
+    "image": "/assets/integrated-logistics.jpg"
+  }
+]
