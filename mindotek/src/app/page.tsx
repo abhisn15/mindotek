@@ -369,7 +369,7 @@ export default function Home() {
         {/* Hero Section */}
         <section
           id="hero"
-          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-100 pt-20 md:pt-0"
+          className="relative min-h-screen flex items-start md:items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-100 pt-20 md:pt-0"
         >
           {/* Background visual: subtle industrial texture or image */}
 

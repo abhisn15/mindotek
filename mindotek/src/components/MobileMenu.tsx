@@ -151,7 +151,7 @@ export default function MobileMenu() {
       {/* Mobile Header with Logo and Menu Button */}
       <div
         className={`lg:hidden sticky top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-          isScrolled ? "bg-white shadow-lg" : "bg-transparent"
+          isScrolled ? "bg-white shadow-lg" : "h-0 bg-transparent"
         }`}
       >
         <div className="flex items-center justify-between px-4 py-3">
@@ -162,7 +162,7 @@ export default function MobileMenu() {
                 src={
                   isScrolled
                     ? "/assets/logo-mindotek-black.webp"
-                    : "/assets/logo-mindotek-black.webp"
+                    : "/assets/logo-mindotek-white.webp"
                 }
                 alt="Mindotek Logo"
                 className="w-40 h-auto"
