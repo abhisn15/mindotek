@@ -228,7 +228,7 @@ export default function Home() {
 
   return (
     <>
-      {/* SEO Structured Data */}
+      {/* SEO Structured Data - Organization */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -238,7 +238,8 @@ export default function Home() {
             name: "PT. Logamindo Teknologi Indonesia",
             alternateName: "Mindotek",
             url: "https://mindotek.com",
-            logo: "https://mindotek.com/assets/logo-mindotek.webp",
+            logo: "https://mindotek.com/assets/logo-mindotek-white.webp",
+            image: "https://mindotek.com/assets/banner-hero.webp",
             description:
               "Leading logistics and warehousing company in Indonesia providing comprehensive supply chain solutions with 7 strategic locations nationwide.",
             foundingDate: "2018",
@@ -261,6 +262,101 @@ export default function Home() {
               availableLanguage: ["Indonesian", "English"],
             },
             sameAs: ["https://tpmgroup.id"],
+          }),
+        }}
+      />
+
+      {/* SEO Structured Data - WebSite for Sitelinks Search Box */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Mindotek",
+            alternateName: "PT. Logamindo Teknologi Indonesia",
+            url: "https://mindotek.com",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: "https://mindotek.com/portfolio?search={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          }),
+        }}
+      />
+
+      {/* SEO Structured Data - BreadcrumbList for Navigation */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://mindotek.com"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Company Profile",
+                item: "https://mindotek.com/#company"
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: "Services",
+                item: "https://mindotek.com/#services"
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: "Portfolio",
+                item: "https://mindotek.com/portfolio"
+              },
+              {
+                "@type": "ListItem",
+                position: 5,
+                name: "Locations",
+                item: "https://mindotek.com/#locations"
+              },
+              {
+                "@type": "ListItem",
+                position: 6,
+                name: "Contact",
+                item: "https://mindotek.com/#contact"
+              }
+            ]
+          }),
+        }}
+      />
+
+      {/* SEO Structured Data - Service offerings */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            itemListElement: servicesData.map((service, index) => ({
+              "@type": "Service",
+              position: index + 1,
+              name: service.title,
+              description: service.summary,
+              provider: {
+                "@type": "Organization",
+                name: "PT. Logamindo Teknologi Indonesia",
+                url: "https://mindotek.com"
+              },
+              areaServed: "Indonesia",
+              serviceType: "Logistics and Supply Chain"
+            }))
           }),
         }}
       />
