@@ -5,6 +5,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Shield, Users, Wrench, Building, CheckCircle, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import OptimizedImage from '@/components/OptimizedImage'
+import MobileMenu from '@/components/MobileMenu'
 
 export default function ServicesPage() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -58,6 +60,7 @@ export default function ServicesPage() {
       title: 'Security Services',
       description: 'Professional security solutions with trained personnel and advanced monitoring systems',
       color: 'from-blue-500 to-blue-600',
+      image: '/assets/banner-hero/security.jpg',
       features: [
         'Guard Officers with professional training',
         'Security consultants and planning',
@@ -71,6 +74,7 @@ export default function ServicesPage() {
       title: 'Cleaning & Gardening',
       description: 'Comprehensive cleaning and landscaping services for all types of properties',
       color: 'from-blue-600 to-blue-700',
+      image: '/assets/cleaning.JPG',
       features: [
         'General and specialized cleaning',
         'Hygiene cleaning for sensitive areas',
@@ -84,6 +88,7 @@ export default function ServicesPage() {
       title: 'Property Maintenance',
       description: 'Complete property maintenance solutions including mechanical, electrical, and building services',
       color: 'from-blue-700 to-blue-800',
+      image: '/assets/property_maintenance.JPG',
       features: [
         'Pest control services',
         'M&E maintenance and repairs',
@@ -97,6 +102,7 @@ export default function ServicesPage() {
       title: 'Office Support',
       description: 'Full-service office support including administration, technical, and operational services',
       color: 'from-blue-800 to-blue-900',
+      image: '/assets/office_support.jpg',
       features: [
         'Front desk and reception services',
         'Administrative support',
@@ -185,9 +191,10 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div ref={heroRef} className="min-h-screen pt-16">
+    <div ref={heroRef} className="min-h-screen">
+      <MobileMenu />
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+      <section className="relative py-20 sm:py-32 bg-gradient-to-br from-blue-600 to-blue-400 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-40 h-40 bg-blue-200 rounded-lg transform rotate-45"></div>
@@ -239,14 +246,28 @@ export default function ServicesPage() {
                   ref={(el) => { cardRefs.current[index] = el }}
                   className="group relative"
                 >
-                  <div className="bg-white rounded-2xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200 relative overflow-hidden h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
-                    <div className="relative z-10">
-                      <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                        <IconComponent className="text-white" size={32} />
+                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200 relative overflow-hidden h-full">
+                    {/* Service Image */}
+                    <div className="relative h-64 overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={`${service.title} - TPM Group Service`}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent"></div>
+                      
+                      {/* Icon Overlay on Image */}
+                      <div className="absolute bottom-4 left-4">
+                        <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                          <IconComponent className="text-white" size={28} />
+                        </div>
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">{service.title}</h3>
                       <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
                       
                       <ul className="space-y-3 mb-6">
@@ -266,6 +287,9 @@ export default function ServicesPage() {
                         <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                       </a>
                     </div>
+
+                    {/* Hover Border Effect */}
+                    <div className="absolute inset-0 border-2 border-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none"></div>
                   </div>
                 </div>
               )

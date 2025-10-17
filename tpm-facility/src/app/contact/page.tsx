@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react'
+import MobileMenu from '@/components/MobileMenu'
 
 export default function ContactPage() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -93,9 +94,10 @@ export default function ContactPage() {
   ]
 
   return (
-    <div ref={heroRef} className="min-h-screen pt-16">
+    <div ref={heroRef} className="min-h-screen">
+      <MobileMenu />
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+      <section className="relative py-20 sm:py-32 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-40 h-40 bg-blue-200 rounded-full transform rotate-45"></div>
           <div className="absolute top-40 right-32 w-32 h-32 bg-blue-300 rounded-full transform rotate-12"></div>

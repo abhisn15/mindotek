@@ -6,13 +6,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { CheckCircle, Award, Users, Target, Globe, Shield, Lightbulb, TrendingUp, Heart } from 'lucide-react'
 import CountUp from '@/components/CountUp'
 import Link from 'next/link'
-import OptimizedImage from '@/components/OptimizedImage'
-import MobileMenu from '@/components/MobileMenu'
 
 export default function AboutPage() {
   const heroRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
-  const certRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
@@ -46,26 +43,6 @@ export default function AboutPage() {
             trigger: cardRefs.current[0],
             start: 'top 80%',
             end: 'bottom 20%',
-            toggleActions: 'play none none none'
-          }
-        }
-      )
-
-      // Animate certifications one by one with stagger
-      gsap.fromTo(certRefs.current,
-        { y: 50, opacity: 0, scale: 0.8, rotationY: -15 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          rotationY: 0,
-          duration: 0.8,
-          ease: 'back.out(1.7)',
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: certRefs.current[0],
-            start: 'top 85%',
-            end: 'bottom 15%',
             toggleActions: 'play none none none'
           }
         }
@@ -111,28 +88,27 @@ export default function AboutPage() {
   const certifications = [
     {
       title: "ISO 9001:2015",
-      description: "Quality Management System",
-      image: "/assets/iso-certified/iso_1.webp"
+      description: "Quality Management System"
     },
     {
       title: "ISO 14001:2015",
-      description: "Environmental Management",
-      image: "/assets/iso-certified/iso_2.webp"
+      description: "Environmental Management"
     },
     {
       title: "ISO 37001:2016",
-      description: "Anti-Bribery Management",
-      image: "/assets/iso-certified/iso_3.webp"
+      description: "Anti-Bribery Management"
+    },
+    {
+      title: "OHSAS 18001:2007",
+      description: "Occupational Health & Safety"
     },
     {
       title: "ISO 45001:2018",
-      description: "OH&S Management",
-      image: "/assets/iso-certified/iso_4.webp"
+      description: "OH&S Management"
     },
     {
       title: "ISO 31000:2018",
-      description: "Risk Management",
-      image: "/assets/iso-certified/iso_5.webp"
+      description: "Risk Management"
     }
   ]
 
@@ -158,10 +134,9 @@ export default function AboutPage() {
   ]
 
   return (
-    <div ref={heroRef} className="min-h-screen">
-      <MobileMenu />
+    <div ref={heroRef} className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="relative py-20 sm:py-32 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+      <section className="relative py-32 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-40 h-40 bg-blue-200 rounded-full transform rotate-45"></div>
@@ -176,7 +151,7 @@ export default function AboutPage() {
               About Us
             </div>
             <h1 className="text-5xl md:text-7xl font-black text-gray-900 mb-8">
-              Leading Facility and Service Management Company
+              Leading Facility Management
               <span className="block bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                 Since 2004
               </span>
@@ -243,13 +218,18 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
                 <p>
-                  Since 2004, PT Trimitra Putra Mandiri has been a leading provider of integrated facility and service management solutions, trusted by businesses across Indonesia.
+                  Founded in January 2004 in Jakarta, PT. Trimitra Putra Mandiri has evolved into a leading 
+                  facility and service management company, specializing in comprehensive solutions tailored to 
+                  meet the dynamic needs of modern businesses.
                 </p>
                 <p>
-                  We deliver a wide range of services—security, cleaning & gardening, property maintenance, and office support—ensuring health, safety, and productivity in every client's environment.
+                  We believe that health, hygiene, and safety are fundamental to productivity. Our professional 
+                  service facilities are designed with precision and delivered by highly trained operators who 
+                  consistently provide exceptional quality.
                 </p>
                 <p>
-                  With certified teams and nationwide coverage, TPM is committed to raising service standards, streamlining operations, and helping your business thrive.
+                  Our mission is to upgrade facility service standards according to the latest industry benchmarks, 
+                  ensuring that your business thrives while we handle the operational excellence behind the scenes.
                 </p>
               </div>
               <div className="flex gap-4 pt-4">
@@ -269,43 +249,13 @@ export default function AboutPage() {
             </div>
             <div ref={(el) => { cardRefs.current[1] = el }} className="relative">
               <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                  alt="Modern office building - TPM Group Company History"
-                  width={800}
-                  height={600}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  unoptimized
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
-                
-                {/* Company History Overlay - Smaller */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-lg max-w-xs">
-                    <div className="flex items-center space-x-3 mb-3">
-                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                        <Globe className="w-5 h-5 text-blue-600" />
-                      </div>
-                      <div>
-                        <h3 className="text-base font-bold text-gray-900">Company History</h3>
-                        <p className="text-xs text-gray-600">Growing Together Since 2004</p>
-                      </div>
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="text-center text-gray-500">
+                    <div className="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <Globe className="text-gray-500" size={40} />
                     </div>
-                    <div className="space-y-1.5 text-xs text-gray-700">
-                      <div className="flex items-center space-x-2">
-                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-                        <span>Founded in Jakarta, 2004</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-                        <span>20+ Years of Excellence</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-                        <span>Leading Facility Management</span>
-                      </div>
-                    </div>
+                    <p className="text-lg font-medium">Company History</p>
+                    <p className="text-sm">Growing Together Since 2004</p>
                   </div>
                 </div>
               </div>
@@ -408,47 +358,22 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => {
               const IconComponent = value.icon
-              const valueImages = [
-                "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", // Integrity
-                "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", // Excellence
-                "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", // Teamwork
-                "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", // Innovation
-                "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", // Commitment
-                "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"  // Growth
-              ];
               return (
                 <div
                   key={index}
                   ref={(el) => { cardRefs.current[4 + index] = el }}
                   className="group relative"
                 >
-                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200 relative overflow-hidden h-full">
-                    {/* Value Image */}
-                    <div className="relative h-56 overflow-hidden">
-                      <img
-                        src={valueImages[index]}
-                        alt={`${value.title} - TPM Group Core Value`}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
-                      
-                      {/* Icon Overlay on Image */}
-                      <div className="absolute bottom-4 left-4">
-                        <div className="w-14 h-14 bg-white/95 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                          <IconComponent className="text-blue-600" size={24} />
-                        </div>
+                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200 relative overflow-hidden h-full">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div className="relative z-10 text-center">
+                      <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="text-white" size={28} />
                       </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">{value.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{value.description}</p>
                     </div>
-
-                    {/* Content */}
-                    <div className="p-6 text-center">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">{value.title}</h3>
-                      <p className="text-gray-600 leading-relaxed text-sm">{value.description}</p>
-                    </div>
-
-                    {/* Hover Border Effect */}
-                    <div className="absolute inset-0 border-2 border-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none"></div>
                   </div>
                 </div>
               )
@@ -482,26 +407,14 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certifications.map((cert, index) => (
-              <div 
-                key={index} 
-                ref={(el) => { certRefs.current[index] = el }}
-                className="group text-center flex-shrink-0"
-              >
-                <div className="w-36 h-36 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-2xl border-4 border-white/20 group-hover:scale-110 transition-transform duration-300 p-4 overflow-hidden">
-                  <Image
-                    src={cert.image}
-                    alt={cert.title}
-                    width={144}
-                    height={144}
-                    className="object-contain w-full h-full"
-                    loading="lazy"
-                    unoptimized
-                  />
+              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/20 hover:bg-white/20 transition-all duration-300">
+                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Award className="text-white" size={32} />
                 </div>
-                <h3 className="text-sm font-bold text-white mb-1">{cert.title}</h3>
-                <p className="text-xs text-blue-100 leading-tight">{cert.description}</p>
+                <h3 className="text-xl font-bold text-white mb-2">{cert.title}</h3>
+                <p className="text-blue-100">{cert.description}</p>
               </div>
             ))}
           </div>

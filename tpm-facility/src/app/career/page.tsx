@@ -1,12 +1,15 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Users, Award, MapPin, TrendingUp, CheckCircle, Heart, Lightbulb, Shield } from 'lucide-react'
+import { Users, Award, MapPin, TrendingUp, CheckCircle, Heart, Lightbulb, Shield, X, Instagram, Building2, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
+import OptimizedImage from '@/components/OptimizedImage'
+import MobileMenu from '@/components/MobileMenu'
 
 export default function CareerPage() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -123,9 +126,74 @@ export default function CareerPage() {
   ]
 
   return (
-    <div ref={heroRef} className="min-h-screen pt-16">
+    <div ref={heroRef} className="min-h-screen">
+      <MobileMenu />
+      
+      {/* Apply Now Popup */}
+      {isPopupOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in fade-in zoom-in duration-300">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsPopupOpen(false)}
+              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            >
+              <X size={24} className="text-gray-600" />
+            </button>
+
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Building2 className="text-white" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Apply to TPM Group</h3>
+              <p className="text-gray-600">Choose your preferred application method</p>
+            </div>
+
+            <div className="space-y-4">
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/tpmloker"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 border-2 border-gray-200 rounded-xl hover:border-pink-500 hover:bg-pink-50 transition-all duration-300 group"
+              >
+                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center">
+                  <Instagram className="text-white" size={24} />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-gray-900 group-hover:text-pink-600">Instagram</h4>
+                  <p className="text-sm text-gray-600">@tpmloker</p>
+                </div>
+                <ExternalLink className="text-gray-400 group-hover:text-pink-600" size={20} />
+              </a>
+
+              {/* JobStreet */}
+              <a
+                href="https://www.jobstreet.co.id/id/companies/1234567890"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 group"
+              >
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                  <Building2 className="text-white" size={24} />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-gray-900 group-hover:text-blue-600">JobStreet</h4>
+                  <p className="text-sm text-gray-600">Trimitra Putra Mandiri</p>
+                </div>
+                <ExternalLink className="text-gray-400 group-hover:text-blue-600" size={20} />
+              </a>
+            </div>
+
+            <p className="text-xs text-gray-500 text-center mt-6">
+              Click to visit our recruitment page
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+      <section className="relative py-20 sm:py-32 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-40 h-40 bg-blue-200 rounded-full transform rotate-45"></div>
           <div className="absolute top-40 right-32 w-32 h-32 bg-blue-300 rounded-full transform rotate-12"></div>
@@ -279,12 +347,12 @@ export default function CareerPage() {
                     ))}
                   </ul>
                 </div>
-                <Link
-                  href="/contact"
+                <button
+                  onClick={() => setIsPopupOpen(true)}
                   className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-blue-900 transition-all duration-300"
                 >
                   Apply Now
-                </Link>
+                </button>
               </div>
             ))}
           </div>

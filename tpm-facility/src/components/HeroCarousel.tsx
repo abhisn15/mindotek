@@ -47,7 +47,7 @@ export default function HeroCarousel() {
     {
       id: 'maintenance',
       image:
-        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+        '/assets/banner-hero/property_maintenance.webp',
       title: 'Property Maintenance',
       subtitle: 'Complete Maintenance Solutions',
       description:
@@ -58,7 +58,7 @@ export default function HeroCarousel() {
     {
       id: 'office',
       image:
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+        '/assets/banner-hero/office_support.webp',
       title: 'Office Support',
       subtitle: 'Office Excellence',
       description:
