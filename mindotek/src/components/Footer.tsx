@@ -18,6 +18,8 @@ export default function Footer() {
                 height={30}
                 className="hover:opacity-90 transition-opacity"
                 style={{ width: "180px", height: "auto" }}
+                loading="lazy"
+                quality={75}
               />
             </Link>
             <p className="text-gray-400">

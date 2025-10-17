@@ -389,7 +389,7 @@ export default function Home() {
 
             {/* Main Title */}
             <h1
-              className="tracking-tighter text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-600 to-yellow-600 drop-shadow-sm"
+              className="tracking-tighter text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-600 to-yellow-600 drop-shadow-sm"
               style={{ fontFamily: '"Century", serif' }}
             >
               MINDOTEK
@@ -1221,7 +1221,7 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-12">
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 min-h-[120px] flex flex-col items-center justify-center">
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-3">
+                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
                       <svg
                         className="w-6 h-6 text-red-600"
                         fill="none"
@@ -1248,7 +1248,7 @@ export default function Home() {
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 min-h-[120px] flex flex-col items-center justify-center">
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-3">
+                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
                       <svg
                         className="w-6 h-6 text-red-600"
                         fill="none"

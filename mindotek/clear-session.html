@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Session - Mindotek</title>
+    <style>
+        body {
+            font-family: system-ui;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fef2f2 0%, #fff 50%, #fff7ed 100%);
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        h1 { color: #DC2626; margin-bottom: 20px; }
+        button {
+            background: linear-gradient(135deg, #DC2626, #EF4444);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.3);
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+        }
+        .status.show {
+            display: block;
+        }
+        .success {
+            background: #dcfce7;
+            color: #166534;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 Clear Loading Session</h1>
+        <p>Click button ini untuk reset loading animation</p>
+        <button onclick="clearAndRedirect()">Clear & Reload</button>
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        function clearAndRedirect() {
+            // Clear the session storage
+            sessionStorage.removeItem('mindotek_page_loaded');
+            sessionStorage.removeItem('pageLoaded');
+            
+            // Show success message
+            const status = document.getElementById('status');
+            status.className = 'status success show';
+            status.textContent = '✅ Session cleared! Redirecting...';
+            
+            // Redirect to home page after 1 second
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
