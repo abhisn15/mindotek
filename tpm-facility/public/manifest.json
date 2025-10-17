@@ -1,0 +1,39 @@
+{
+  "name": "TPM Group - Facility Management Services",
+  "short_name": "TPM Group",
+  "description": "Leading facility management services provider in Indonesia since 2004",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e40af",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/logo-tpm-text-black.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logo-tpm-text-black.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Services",
+      "url": "/services",
+      "description": "View our facility management services"
+    },
+    {
+      "name": "Contact",
+      "url": "/contact",
+      "description": "Get in touch with us"
+    }
+  ]
+}
+
