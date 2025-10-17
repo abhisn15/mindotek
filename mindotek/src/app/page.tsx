@@ -379,7 +379,7 @@ export default function Home() {
           {/* Floating Icons Animation */}
           <FloatingIcons />
 
-          <div className="relative z-20 text-center px-6 sm:px-8 md:px-12 max-w-6xl mx-auto py-24 sm:py-28">
+          <div className="relative z-20 text-center px-6 sm:px-8 md:px-12 max-w-6xl mx-auto py-12 md:py-28">
             {/* Company Label */}
             <div className="inline-block px-6 py-3 bg-white/80 backdrop-blur-md rounded-full shadow-lg mb-6">
               <span className="text-sm sm:text-base font-semibold text-red-700 tracking-wide">
@@ -401,7 +401,7 @@ export default function Home() {
                 text="Logistics Partner in Indonesia"
                 className="text-2xl sm:text-3xl md:text-4xl text-orange-600 font-medium mb-4 [text-shadow:0_2px_8px_rgba(0,0,0,0.7),0_1px_0_#222,0_0_4px_#ed3f27]"
               />
-              <p className="text-base sm:text-lg md:text-xl text-white font-medium shadow-lg max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-white font-medium max-w-3xl mx-auto leading-relaxed">
                 <span className="[text-shadow:0_2px_8px_rgba(0,0,0,0.7),0_1px_0_#222,0_0_4px_#ed3f27]">
                   Providing{" "}
                   <span className="text-orange-600 font-semibold [text-shadow:0_2px_8px_rgba(0,0,0,0.7),0_1px_0_#222,0_0_4px_#ed3f27]">
@@ -418,7 +418,7 @@ export default function Home() {
             </div>
 
             {/* Value Highlight Strip */}
-            <div className="mt-10 mb-14 mx-auto max-w-4xl bg-white/90 backdrop-blur-md border border-red-100 rounded-2xl shadow-md">
+            <div className="mt-10 mb-14 mx-auto max-w-4xl bg-white/90 border border-red-100 rounded-2xl">
               <p className="text-gray-700 text-base sm:text-lg md:text-xl px-8 py-6 leading-relaxed">
                 From <strong>Warehouse Management System (WMS)</strong> to
                 nationwide distribution and on-site support, Mindotek delivers{" "}
@@ -554,7 +554,7 @@ export default function Home() {
                               key={index}
                               className={`mb-6 ${
                                 index === 0
-                                  ? "text-lg sm:text-xl font-medium"
+                                  ? "text-lg sm:text-xl"
                                   : "text-base sm:text-lg"
                               }`}
                             >

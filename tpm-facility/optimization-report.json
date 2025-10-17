@@ -1,0 +1,224 @@
+{
+  "timestamp": "2025-10-17T02:38:22.409Z",
+  "config": {
+    "webpQuality": 85,
+    "webpEffort": 6,
+    "maxWidth": 1920,
+    "optimizeExisting": true
+  },
+  "summary": {
+    "filesProcessed": 34,
+    "filesConverted": 5,
+    "filesOptimized": 29,
+    "originalSizeMB": "16.96",
+    "optimizedSizeMB": "1.73",
+    "savingsPercent": "89.82",
+    "savingsMB": "15.24"
+  },
+  "files": [
+    {
+      "name": "cleaning.jpg",
+      "originalSize": 4910904,
+      "optimizedSize": 237382,
+      "savings": "95.17"
+    },
+    {
+      "name": "security.jpg",
+      "originalSize": 2908669,
+      "optimizedSize": 442412,
+      "savings": "84.79"
+    },
+    {
+      "name": "cleaning.JPG",
+      "originalSize": 4718592,
+      "optimizedSize": 306664,
+      "savings": "93.50"
+    },
+    {
+      "name": "amartha-logo-2020.webp",
+      "originalSize": 16370,
+      "optimizedSize": 15200,
+      "savings": "7.15"
+    },
+    {
+      "name": "appktm.webp",
+      "originalSize": 7276,
+      "optimizedSize": 7168,
+      "savings": "1.48"
+    },
+    {
+      "name": "bali-tower.webp",
+      "originalSize": 9258,
+      "optimizedSize": 8944,
+      "savings": "3.39"
+    },
+    {
+      "name": "bks.webp",
+      "originalSize": 13066,
+      "optimizedSize": 12634,
+      "savings": "3.31"
+    },
+    {
+      "name": "bnefit.webp",
+      "originalSize": 5442,
+      "optimizedSize": 5342,
+      "savings": "1.84"
+    },
+    {
+      "name": "brilian.webp",
+      "originalSize": 4654,
+      "optimizedSize": 4552,
+      "savings": "2.19"
+    },
+    {
+      "name": "central.webp",
+      "originalSize": 15754,
+      "optimizedSize": 15168,
+      "savings": "3.72"
+    },
+    {
+      "name": "daily-foodhall.webp",
+      "originalSize": 7438,
+      "optimizedSize": 7268,
+      "savings": "2.29"
+    },
+    {
+      "name": "greenmontessori.webp",
+      "originalSize": 12530,
+      "optimizedSize": 12278,
+      "savings": "2.01"
+    },
+    {
+      "name": "hema.webp",
+      "originalSize": 7760,
+      "optimizedSize": 7612,
+      "savings": "1.91"
+    },
+    {
+      "name": "kinokuniya.webp",
+      "originalSize": 8138,
+      "optimizedSize": 7968,
+      "savings": "2.09"
+    },
+    {
+      "name": "lippo-group.webp",
+      "originalSize": 9636,
+      "optimizedSize": 9590,
+      "savings": "0.48"
+    },
+    {
+      "name": "marks-and-spencers.webp",
+      "originalSize": 5630,
+      "optimizedSize": 5544,
+      "savings": "1.53"
+    },
+    {
+      "name": "meikarta.webp",
+      "originalSize": 5248,
+      "optimizedSize": 5008,
+      "savings": "4.57"
+    },
+    {
+      "name": "myrep.webp",
+      "originalSize": 6474,
+      "optimizedSize": 6308,
+      "savings": "2.56"
+    },
+    {
+      "name": "north-land.webp",
+      "originalSize": 18358,
+      "optimizedSize": 17872,
+      "savings": "2.65"
+    },
+    {
+      "name": "ramayana.webp",
+      "originalSize": 4652,
+      "optimizedSize": 4548,
+      "savings": "2.24"
+    },
+    {
+      "name": "remove-background.webp",
+      "originalSize": 6120,
+      "optimizedSize": 6050,
+      "savings": "1.14"
+    },
+    {
+      "name": "sinarmas.webp",
+      "originalSize": 10566,
+      "optimizedSize": 10414,
+      "savings": "1.44"
+    },
+    {
+      "name": "smartfren-hitam.webp",
+      "originalSize": 3290,
+      "optimizedSize": 3150,
+      "savings": "4.26"
+    },
+    {
+      "name": "telkomsel.webp",
+      "originalSize": 11028,
+      "optimizedSize": 10686,
+      "savings": "3.10"
+    },
+    {
+      "name": "zara.webp",
+      "originalSize": 5022,
+      "optimizedSize": 5010,
+      "savings": "0.24"
+    },
+    {
+      "name": "iso_1.webp",
+      "originalSize": 30176,
+      "optimizedSize": 27416,
+      "savings": "9.15"
+    },
+    {
+      "name": "iso_2.webp",
+      "originalSize": 30372,
+      "optimizedSize": 27240,
+      "savings": "10.31"
+    },
+    {
+      "name": "iso_3.webp",
+      "originalSize": 30314,
+      "optimizedSize": 27380,
+      "savings": "9.68"
+    },
+    {
+      "name": "iso_4.webp",
+      "originalSize": 30328,
+      "optimizedSize": 27278,
+      "savings": "10.06"
+    },
+    {
+      "name": "iso_5.webp",
+      "originalSize": 30048,
+      "optimizedSize": 27150,
+      "savings": "9.64"
+    },
+    {
+      "name": "logo-tpm-text-black.webp",
+      "originalSize": 37200,
+      "optimizedSize": 24512,
+      "savings": "34.11"
+    },
+    {
+      "name": "logo-tpm-text-white.webp",
+      "originalSize": 36778,
+      "optimizedSize": 23246,
+      "savings": "36.79"
+    },
+    {
+      "name": "office_support.jpg",
+      "originalSize": 269417,
+      "optimizedSize": 148882,
+      "savings": "44.74"
+    },
+    {
+      "name": "property_maintenance.JPG",
+      "originalSize": 4423680,
+      "optimizedSize": 154640,
+      "savings": "96.50"
+    }
+  ]
+}

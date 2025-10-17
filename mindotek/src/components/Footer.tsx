@@ -16,7 +16,8 @@ export default function Footer() {
                 alt="Mindotek Logo"
                 width={180}
                 height={30}
-                className="h-8 w-auto hover:opacity-90 transition-opacity"
+                className="hover:opacity-90 transition-opacity"
+                style={{ width: "180px", height: "auto" }}
               />
             </Link>
             <p className="text-gray-400">
