@@ -228,7 +228,7 @@ export default function Home() {
 
   return (
     <>
-      {/* SEO Structured Data */}
+      {/* SEO Structured Data - Organization */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -238,7 +238,8 @@ export default function Home() {
             name: "PT. Logamindo Teknologi Indonesia",
             alternateName: "Mindotek",
             url: "https://mindotek.com",
-            logo: "https://mindotek.com/assets/logo-mindotek.webp",
+            logo: "https://mindotek.com/assets/logo-mindotek-white.webp",
+            image: "https://mindotek.com/assets/banner-hero.webp",
             description:
               "Leading logistics and warehousing company in Indonesia providing comprehensive supply chain solutions with 7 strategic locations nationwide.",
             foundingDate: "2018",
@@ -265,6 +266,101 @@ export default function Home() {
         }}
       />
 
+      {/* SEO Structured Data - WebSite for Sitelinks Search Box */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Mindotek",
+            alternateName: "PT. Logamindo Teknologi Indonesia",
+            url: "https://mindotek.com",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: "https://mindotek.com/portfolio?search={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          }),
+        }}
+      />
+
+      {/* SEO Structured Data - BreadcrumbList for Navigation */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://mindotek.com"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Company Profile",
+                item: "https://mindotek.com/#company"
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: "Services",
+                item: "https://mindotek.com/#services"
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: "Portfolio",
+                item: "https://mindotek.com/portfolio"
+              },
+              {
+                "@type": "ListItem",
+                position: 5,
+                name: "Locations",
+                item: "https://mindotek.com/#locations"
+              },
+              {
+                "@type": "ListItem",
+                position: 6,
+                name: "Contact",
+                item: "https://mindotek.com/#contact"
+              }
+            ]
+          }),
+        }}
+      />
+
+      {/* SEO Structured Data - Service offerings */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            itemListElement: servicesData.map((service, index) => ({
+              "@type": "Service",
+              position: index + 1,
+              name: service.title,
+              description: service.summary,
+              provider: {
+                "@type": "Organization",
+                name: "PT. Logamindo Teknologi Indonesia",
+                url: "https://mindotek.com"
+              },
+              areaServed: "Indonesia",
+              serviceType: "Logistics and Supply Chain"
+            }))
+          }),
+        }}
+      />
+
       <main className="min-h-screen bg-white">
         {/* Navigation */}
         <Navigation />
@@ -273,7 +369,7 @@ export default function Home() {
         {/* Hero Section */}
         <section
           id="hero"
-          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-100 pt-20 md:pt-0"
+          className="relative min-h-screen flex items-start md:items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-100 pt-20 md:pt-0"
         >
           {/* Background visual: subtle industrial texture or image */}
 
@@ -283,7 +379,7 @@ export default function Home() {
           {/* Floating Icons Animation */}
           <FloatingIcons />
 
-          <div className="relative z-20 text-center px-6 sm:px-8 md:px-12 max-w-6xl mx-auto py-24 sm:py-28">
+          <div className="relative z-20 text-center px-6 sm:px-8 md:px-12 max-w-6xl mx-auto py-12 md:py-28">
             {/* Company Label */}
             <div className="inline-block px-6 py-3 bg-white/80 backdrop-blur-md rounded-full shadow-lg mb-6">
               <span className="text-sm sm:text-base font-semibold text-red-700 tracking-wide">
@@ -293,7 +389,7 @@ export default function Home() {
 
             {/* Main Title */}
             <h1
-              className="tracking-tighter text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-600 to-yellow-600 drop-shadow-sm"
+              className="tracking-tighter text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-600 to-yellow-600 drop-shadow-sm"
               style={{ fontFamily: '"Century", serif' }}
             >
               MINDOTEK
@@ -305,7 +401,7 @@ export default function Home() {
                 text="Logistics Partner in Indonesia"
                 className="text-2xl sm:text-3xl md:text-4xl text-orange-600 font-medium mb-4 [text-shadow:0_2px_8px_rgba(0,0,0,0.7),0_1px_0_#222,0_0_4px_#ed3f27]"
               />
-              <p className="text-base sm:text-lg md:text-xl text-white font-medium shadow-lg max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-white font-medium max-w-3xl mx-auto leading-relaxed">
                 <span className="[text-shadow:0_2px_8px_rgba(0,0,0,0.7),0_1px_0_#222,0_0_4px_#ed3f27]">
                   Providing{" "}
                   <span className="text-orange-600 font-semibold [text-shadow:0_2px_8px_rgba(0,0,0,0.7),0_1px_0_#222,0_0_4px_#ed3f27]">
@@ -322,7 +418,7 @@ export default function Home() {
             </div>
 
             {/* Value Highlight Strip */}
-            <div className="mt-10 mb-14 mx-auto max-w-4xl bg-white/90 backdrop-blur-md border border-red-100 rounded-2xl shadow-md">
+            <div className="mt-10 mb-14 mx-auto max-w-4xl bg-white/90 border border-red-100 rounded-2xl">
               <p className="text-gray-700 text-base sm:text-lg md:text-xl px-8 py-6 leading-relaxed">
                 From <strong>Warehouse Management System (WMS)</strong> to
                 nationwide distribution and on-site support, Mindotek delivers{" "}
@@ -458,7 +554,7 @@ export default function Home() {
                               key={index}
                               className={`mb-6 ${
                                 index === 0
-                                  ? "text-lg sm:text-xl font-medium"
+                                  ? "text-lg sm:text-xl"
                                   : "text-base sm:text-lg"
                               }`}
                             >
@@ -1125,7 +1221,7 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-12">
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 min-h-[120px] flex flex-col items-center justify-center">
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-3">
+                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
                       <svg
                         className="w-6 h-6 text-red-600"
                         fill="none"
@@ -1152,7 +1248,7 @@ export default function Home() {
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 min-h-[120px] flex flex-col items-center justify-center">
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-3">
+                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
                       <svg
                         className="w-6 h-6 text-red-600"
                         fill="none"

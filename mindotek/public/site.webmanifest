@@ -10,15 +10,9 @@
   "icons": [
     {
       "src": "/assets/icon.webp",
-      "sizes": "192x192",
+      "sizes": "107x107",
       "type": "image/webp",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/assets/logo-mindotek.webp",
-      "sizes": "512x512",
-      "type": "image/webp",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
   "categories": ["logistics", "business", "warehousing"],

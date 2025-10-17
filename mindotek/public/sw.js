@@ -5,11 +5,10 @@ const DYNAMIC_CACHE = 'mindotek-dynamic-v2';
 
 const urlsToCache = [
   '/',
-  '/assets/logo-mindotek.webp',
+  '/assets/logo-mindotek-white.webp',
+  '/assets/logo-mindotek-black.webp',
   '/assets/icon.webp',
-  '/globals.css',
-  '/_next/static/css/',
-  '/_next/static/js/'
+  '/assets/banner-hero.webp'
 ];
 
 // Install event - cache static resources

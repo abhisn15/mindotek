@@ -1,6 +1,6 @@
 'use client';
 
-import { useInView, useMotionValue, useSpring } from 'framer-motion';
+import { useMotionValue, animate } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
 interface CountUpProps {
@@ -9,7 +9,7 @@ interface CountUpProps {
   suffix?: string;
   prefix?: string;
   className?: string;
-  noComma?: boolean; // Option to disable comma formatting
+  noComma?: boolean;
 }
 
 export default function CountUp({
@@ -20,34 +20,30 @@ export default function CountUp({
   className = '',
   noComma = false,
 }: CountUpProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, {
-    duration: duration * 1000,
-    bounce: 0,
-  });
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [motionValue, isInView, value]);
+    const controls = animate(motionValue, value, {
+      duration,
+      ease: "easeOut",
+    });
+
+    return controls.stop;
+  }, [motionValue, value, duration]);
 
   useEffect(() => {
-    const unsubscribe = springValue.on('change', (latest) => {
+    const unsubscribe = motionValue.on('change', (latest) => {
       if (ref.current) {
-        const formattedValue = noComma 
+        const formattedValue = noComma
           ? Math.floor(latest).toString()
           : Math.floor(latest).toLocaleString();
-        (ref.current as HTMLElement).textContent = 
-          prefix + formattedValue + suffix;
+        ref.current.textContent = prefix + formattedValue + suffix;
       }
     });
 
     return unsubscribe;
-  }, [springValue, prefix, suffix, noComma]);
+  }, [motionValue, prefix, suffix, noComma]);
 
   return <span ref={ref} className={className}>0</span>;
 }
-

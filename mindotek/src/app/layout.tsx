@@ -88,11 +88,40 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Preconnect to external services */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body className={`${gothicA1.variable} font-sans antialiased`}>
+        {/* Loading Screen - 1 second logo animation */}
+        <div 
+          id="page-loader" 
+          className="fixed inset-0 z-[99999] bg-gradient-to-br from-gray-50 via-white to-red-50 flex items-center justify-center opacity-100 transition-opacity duration-500"
+        >
+          <div 
+            className="w-80 h-24 bg-contain bg-no-repeat bg-center animate-fadeInScale"
+            style={{ backgroundImage: 'url(/assets/logo-mindotek-black.webp)' }}
+          />
+        </div>
+
+        {/* Hide loader after 1 second */}
+        <Script id="hide-loader" strategy="afterInteractive">
+          {`
+            window.addEventListener('DOMContentLoaded', function() {
+              setTimeout(function() {
+                const loader = document.getElementById('page-loader');
+                if (loader) {
+                  loader.style.opacity = '0';
+                  setTimeout(function() {
+                    loader.style.display = 'none';
+                  }, 500);
+                }
+              }, 1000);
+            });
+          `}
+        </Script>
+
         {children}
 
         {/* Scroll to Top Button */}
@@ -111,10 +140,10 @@ export default function RootLayout({
                 window.addEventListener('load', function() {
                   navigator.serviceWorker.register('/sw.js')
                     .then(function(registration) {
-                      console.log('SW registered: ', registration);
+                      // console.log('SW registered: ', registration);
                     })
                     .catch(function(registrationError) {
-                      console.log('SW registration failed: ', registrationError);
+                      //  console.log('SW registration failed: ', registrationError);
                     });
                 });
               }

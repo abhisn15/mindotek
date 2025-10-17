@@ -190,7 +190,7 @@ export default function Footer() {
             <p className="text-gray-500 text-sm">
               © 2025 PT. Trimitra Putra Mandiri. All rights reserved.
             </p>
-            <div className="flex flex-wrap gap-6 justify-center">
+            {/* <div className="flex flex-wrap gap-6 justify-center">
               <Link 
                 href="/privacy" 
                 className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-300"
@@ -211,7 +211,7 @@ export default function Footer() {
               >
                 Sitemap
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

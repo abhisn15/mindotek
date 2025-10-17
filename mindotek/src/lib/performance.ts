@@ -12,7 +12,7 @@ interface WebVitalsMetric {
 export const reportWebVitals = (metric: WebVitalsMetric) => {
   // Log to console in development
   if (process.env.NODE_ENV === 'development') {
-    console.log(metric);
+    // console.log(metric);
   }
 
   // Send to analytics in production
