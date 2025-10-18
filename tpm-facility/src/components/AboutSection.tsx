@@ -134,7 +134,7 @@ export default function AboutSection() {
             About TPM Group
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-8">
-            Leading Facility Management
+            Leading Facility & Service Management
             <span className="block bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
               Since 2004
             </span>
@@ -179,7 +179,7 @@ export default function AboutSection() {
                 <h3 className="text-2xl font-bold text-gray-900">Our Vision</h3>
               </div>
               <p className="text-gray-700 leading-relaxed text-lg">
-                To become the leading integrated facility management company in Indonesia, 
+                To become the leading integrated facility & service management company in Indonesia, 
                 recognized for our innovation, reliability, and commitment to excellence in 
                 serving our clients' diverse needs.
               </p>

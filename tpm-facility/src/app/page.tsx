@@ -1,7 +1,10 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Shield,
   Users,
@@ -16,14 +19,53 @@ import {
   Award,
   MapPin,
   Heart,
-} from 'lucide-react'
-import HeroCarousel from '@/components/HeroCarousel'
-import ClientLogoMarquee from '@/components/ClientLogoMarquee'
-import StatsSection from '@/components/StatsSection'
-import MobileMenu from '@/components/MobileMenu'
-import OptimizedImage from '@/components/OptimizedImage'
+} from "lucide-react";
+import HeroCarousel from "@/components/HeroCarousel";
+import ClientLogoMarquee from "@/components/ClientLogoMarquee";
+import StatsSection from "@/components/StatsSection";
+import MobileMenu from "@/components/MobileMenu";
+import CountUp from "@/components/CountUp";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  // Animation refs
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+  const testimonialCardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Animation setup
+  useEffect(() => {
+    if (!testimonialsRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Testimonials section animation
+      gsap.fromTo(
+        testimonialCardsRef.current,
+        {
+          opacity: 0,
+          y: 50,
+          scale: 0.9,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: testimonialsRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }, testimonialsRef);
+
+    return () => ctx.revert();
+  }, []);
+
   // Featured client logos for homepage (select the most prominent ones)
   const featuredClientLogos = [
     { name: "Bank BRI", logo: "/assets/clients/bank-bri.webp" },
@@ -78,19 +120,51 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-6">
-                About TPM Group
+                About Us
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Leading Facility Management
+                Leading Facility & Service Management
                 <span className="block bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                   Since 2004
                 </span>
               </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                PT. Trimitra Putra Mandiri - Your trusted partner in facility
-                management services, committed to delivering excellence across
-                Indonesia with ISO-certified quality standards.
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                PT. Trimitra Putra Mandiri - Your trusted partner in facility & service management services, 
+                committed to delivering excellence across Indonesia with ISO-certified quality standards.
               </p>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Founded in January 2004, we have evolved into a leading facility and service management company, 
+                serving over 60 clients across diverse industries.
+              </p>
+
+              {/* Stats Grid */}
+              <div className="grid grid-cols-4 gap-4 mb-8">
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                    <CountUp end={20} suffix="+" duration={2} delay={0.2} />
+                  </div>
+                  <p className="text-gray-600 font-medium text-sm">Years</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                    <CountUp end={60} suffix="+" duration={2} delay={0.4} />
+                  </div>
+                  <p className="text-gray-600 font-medium text-sm">Clients</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                    <CountUp end={30} duration={2} delay={0.6} />
+                  </div>
+                  <p className="text-gray-600 font-medium text-sm">Locations</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                    <CountUp end={6} duration={2} delay={0.8} />
+                  </div>
+                  <p className="text-gray-600 font-medium text-sm">ISO Certified</p>
+                </div>
+              </div>
+
               <Link
                 href="/about"
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -99,8 +173,35 @@ export default function Home() {
                 <ArrowRight size={20} className="ml-2" />
               </Link>
             </div>
-            <div>
-              <StatsSection />
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
+                  <Shield className="text-white" size={24} />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">ISO Certified</h3>
+                <p className="text-gray-600 text-sm">6 International Standards</p>
+              </div>
+              <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
+                  <Users className="text-white" size={24} />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Professional</h3>
+                <p className="text-gray-600 text-sm">Trained Workforce</p>
+              </div>
+              <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
+                  <MapPin className="text-white" size={24} />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Nationwide</h3>
+                <p className="text-gray-600 text-sm">30+ Cities Coverage</p>
+              </div>
+              <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
+                  <TrendingUp className="text-white" size={24} />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Excellence</h3>
+                <p className="text-gray-600 text-sm">Award Winning</p>
+              </div>
             </div>
           </div>
         </div>
@@ -141,14 +242,15 @@ export default function Home() {
                 description:
                   "General, hygiene, and high-rise cleaning plus professional landscaping and gardening",
                 color: "from-blue-600 to-blue-700",
-                image: "/assets/cleaning.webp",
+                image: "/assets/banner-hero/cleaning.webp",
               },
               {
                 icon: Wrench,
                 title: "Property Maintenance",
-                description: "Mechanical, electrical, pest control, and full building maintenance services",
+                description:
+                  "Mechanical, electrical, pest control, and full building maintenance services",
                 color: "from-blue-700 to-blue-800",
-                image: "/assets/property_maintenance.webp",
+                image: "/assets/banner-hero/property_maintenance.webp",
               },
               {
                 icon: Building,
@@ -156,7 +258,7 @@ export default function Home() {
                 description:
                   "Comprehensive office support from administration, technical, customer service, to operational workforce",
                 color: "from-blue-800 to-blue-900",
-                image: "/assets/office_support.webp",
+                image: "/assets/banner-hero/office_support.webp",
               },
             ].map((service, index) => {
               const IconComponent = service.icon;
@@ -172,7 +274,7 @@ export default function Home() {
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent"></div>
-                      
+
                       {/* Icon Overlay on Image */}
                       <div className="absolute bottom-4 left-4">
                         <div
@@ -229,7 +331,7 @@ export default function Home() {
               The TPM Advantage
             </h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              What makes us the preferred choice for facility management across
+              What makes us the preferred choice for facility & service management across
               Indonesia
             </p>
           </div>
@@ -283,10 +385,84 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Client Logos Section */}
-      <section className="py-24 bg-gradient-to-r from-blue-50 to-indigo-50">
+      {/* Client Testimonials Section */}
+      <section ref={testimonialsRef} className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-6">
+              Client Testimonials
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              What Our Clients
+              <span className="block bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                Say About Us
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                testimonial: "TPM Group has consistently delivered excellent service quality. Their professional team and systematic approach have been instrumental in our facility & service management success.",
+                name: "Budi Santoso",
+                position: "Facility Manager",
+                rating: 5
+              },
+              {
+                testimonial: "Reliable, professional, and always responsive to our needs. TPM Group has been an invaluable partner in maintaining our facilities across multiple locations.",
+                name: "Siti Rahayu",
+                position: "Operations Director",
+                rating: 5
+              },
+              {
+                testimonial: "The quality of service and attention to detail provided by TPM Group exceeds our expectations. They truly understand our business needs.",
+                name: "Ahmad Wijaya",
+                position: "General Manager",
+                rating: 5
+              }
+            ].map((testimonial, index) => (
+              <div
+                key={index}
+                ref={(el) => { testimonialCardsRef.current[index] = el }}
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200"
+              >
+                {/* Star Rating */}
+                <div className="flex justify-center mb-6">
+                  {[...Array(testimonial.rating)].map((_, starIndex) => (
+                    <svg
+                      key={starIndex}
+                      className="w-5 h-5 text-yellow-400 fill-current"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+
+                {/* Testimonial Text */}
+                <blockquote className="text-gray-700 italic text-center mb-8 leading-relaxed">
+                  "{testimonial.testimonial}"
+                </blockquote>
+
+                {/* Client Info */}
+                <div className="text-center">
+                  <div className="font-bold text-gray-900 text-lg mb-1">
+                    {testimonial.name}
+                  </div>
+                  <div className="text-gray-600 font-medium">
+                    {testimonial.position}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Client Logos Section */}
+      <section className="py-24 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="">
+          <div className="text-center mb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-6">
               Our Clients
             </div>
@@ -294,12 +470,13 @@ export default function Home() {
               Trusted by Leading Companies
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Join over 60 companies who trust TPM Group for their facility management needs
+              Join over 60 companies who trust TPM Group for their facility
+              management needs
             </p>
           </div>
 
-          {/* Client Logos Marquee */}
-          <ClientLogoMarquee clients={featuredClientLogos} />
+            {/* Client Logos Marquee */}
+            <ClientLogoMarquee clients={featuredClientLogos} />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Industry Categories */}
@@ -397,25 +574,29 @@ export default function Home() {
                   icon: Award,
                   title: "Training Programs",
                   desc: "Continuous Learning & Certification",
-                  image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                  image:
+                    "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
                 },
                 {
                   icon: TrendingUp,
                   title: "Career Growth",
                   desc: "Clear Advancement Paths",
-                  image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                  image:
+                    "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
                 },
-                { 
-                  icon: Heart, 
-                  title: "Work Culture", 
+                {
+                  icon: Heart,
+                  title: "Work Culture",
                   desc: "Supportive Environment",
-                  image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                  image:
+                    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
                 },
-                { 
-                  icon: Users, 
-                  title: "Team Spirit", 
+                {
+                  icon: Users,
+                  title: "Team Spirit",
                   desc: "Collaborative Teamwork",
-                  image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                  image:
+                    "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
                 },
               ].map((item, index) => {
                 const IconComponent = item.icon;
@@ -433,7 +614,7 @@ export default function Home() {
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
-                      
+
                       {/* Icon on Image */}
                       <div className="absolute bottom-3 left-3">
                         <div className="w-12 h-12 bg-white/95 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -498,5 +679,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }

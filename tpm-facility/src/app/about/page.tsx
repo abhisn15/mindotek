@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { CheckCircle, Award, Users, Target, Globe, Shield, Lightbulb, TrendingUp, Heart } from 'lucide-react'
 import CountUp from '@/components/CountUp'
 import Link from 'next/link'
-import OptimizedImage from '@/components/OptimizedImage'
+import Image from 'next/image'
 import MobileMenu from '@/components/MobileMenu'
 
 export default function AboutPage() {
@@ -161,7 +161,7 @@ export default function AboutPage() {
     <div ref={heroRef} className="min-h-screen">
       <MobileMenu />
       {/* Hero Section */}
-      <section className="relative py-20 sm:py-32 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+      <section className="relative py-20 sm:py-32 bg-gradient-to-b from-blue-400 to-white overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-40 h-40 bg-blue-200 rounded-full transform rotate-45"></div>
@@ -182,7 +182,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
-              PT. Trimitra Putra Mandiri - Your trusted partner in facility management services, 
+              PT. Trimitra Putra Mandiri - Your trusted partner in facility & service management services, 
               committed to delivering excellence across Indonesia with ISO-certified quality standards.
             </p>
             
@@ -303,7 +303,7 @@ export default function AboutPage() {
                       </div>
                       <div className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-                        <span>Leading Facility Management</span>
+                        <span>Leading Facility & Service Management</span>
                       </div>
                     </div>
                   </div>
@@ -546,6 +546,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
 
       {/* CTA Section */}
       <section className="py-24 bg-white">

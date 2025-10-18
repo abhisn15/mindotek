@@ -78,7 +78,7 @@ export default function Navigation() {
               alt="TPM Group Logo"
               width={200}
               height={200}
-              className={`absolute transition-all duration-500 ${
+              className={`hidden lg:block absolute transition-all duration-500 ${
                 scrolled ? 'opacity-0' : 'opacity-100'
               }`}
             />
@@ -88,7 +88,7 @@ export default function Navigation() {
               alt="TPM Group Logo"
               width={200}
               height={200}
-              className={`transition-all duration-500 ${
+              className={`hidden lg:block transition-all duration-500 ${
                 scrolled ? 'opacity-100' : 'opacity-0'
               }`}
             />

@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Script from 'next/script';
 import { Gothic_A1 } from 'next/font/google';
-// MobileMenu is used globally in the app
 import ScrollToTop from '@/components/ScrollToTop';
 import EnhancedSmoothScroll from '@/components/EnhancedSmoothScroll';
 
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   other: {
-    'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com; connect-src 'self' https://maps.googleapis.com;",
+    'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com; connect-src 'self' https://maps.googleapis.com https://maps.gstatic.com;",
   },
   openGraph: {
     title: 'Mindotek – PT. Logamindo Teknologi Indonesia | TPM Group',
@@ -94,10 +93,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body className={`${gothicA1.variable} font-sans antialiased`}>
-        {/* Loading Screen - 1 second logo animation */}
+        {/* Loading Screen - Splash Screen 1 second */}
         <div 
           id="page-loader" 
-          className="fixed inset-0 z-[99999] bg-gradient-to-br from-gray-50 via-white to-red-50 flex items-center justify-center opacity-100 transition-opacity duration-500"
+          className="fixed inset-0 z-[99999] bg-gradient-to-br from-gray-50 via-white to-red-50 flex items-center justify-center transition-opacity duration-500"
+          style={{ opacity: 1 }}
         >
           <div 
             className="w-80 h-24 bg-contain bg-no-repeat bg-center animate-fadeInScale"
@@ -105,25 +105,27 @@ export default function RootLayout({
           />
         </div>
 
-        {/* Hide loader after 1 second */}
-        <Script id="hide-loader" strategy="afterInteractive">
+        <Script id="hide-loader" strategy="beforeInteractive">
           {`
-            window.addEventListener('DOMContentLoaded', function() {
-              setTimeout(function() {
-                const loader = document.getElementById('page-loader');
-                if (loader) {
-                  loader.style.opacity = '0';
+            (function() {
+              // Hide loader after 1 second
+              if (typeof window !== 'undefined') {
+                window.addEventListener('load', function() {
                   setTimeout(function() {
-                    loader.style.display = 'none';
-                  }, 500);
-                }
-              }, 1000);
-            });
+                    const loader = document.getElementById('page-loader');
+                    if (loader) {
+                      loader.style.opacity = '0';
+                      setTimeout(function() {
+                        loader.style.display = 'none';
+                      }, 500);
+                    }
+                  }, 1000);
+                });
+              }
+            })();
           `}
         </Script>
-
         {children}
-
         {/* Scroll to Top Button */}
         <ScrollToTop />
 
@@ -152,7 +154,6 @@ export default function RootLayout({
         />
 
         {/* Analytics Scripts - Uncomment and replace IDs when ready for production */}
-        
         {/* Google Analytics - Replace GA_MEASUREMENT_ID with your actual ID */}
         {/* 
         <Script

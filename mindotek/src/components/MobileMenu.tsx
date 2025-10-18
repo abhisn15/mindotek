@@ -62,13 +62,13 @@ const getMenuItems = (isPortfolioPage: boolean): MenuItem[] => {
   }
 
   return [
-    { label: "Home", link: "#hero", id: "hero", ariaLabel: "Navigate to home section" },
-    { label: "About Us", link: "#company", id: "company", ariaLabel: "Navigate to about us section" },
-    { label: "Vision", link: "#vision-mission", id: "vision-mission", ariaLabel: "Navigate to vision section" },
-    { label: "Services", link: "#services", id: "services", ariaLabel: "Navigate to services section" },
-    { label: "Locations", link: "#locations", id: "locations", ariaLabel: "Navigate to locations section" },
-    { label: "Portfolio", link: "#portfolio", id: "portfolio", ariaLabel: "Navigate to portfolio section" },
-    { label: "Contact", link: "#contact", id: "contact", ariaLabel: "Navigate to contact section" },
+    { label: "Home", link: "/#hero", id: "hero", ariaLabel: "Navigate to home section" },
+    { label: "About Us", link: "/#company", id: "company", ariaLabel: "Navigate to about us section" },
+    { label: "Vision", link: "/#vision-mission", id: "vision-mission", ariaLabel: "Navigate to vision section" },
+    { label: "Services", link: "/#services", id: "services", ariaLabel: "Navigate to services section" },
+    { label: "Locations", link: "/#locations", id: "locations", ariaLabel: "Navigate to locations section" },
+    { label: "Portfolio", link: "/#portfolio", id: "portfolio", ariaLabel: "Navigate to portfolio section" },
+    { label: "Contact", link: "/#contact", id: "contact", ariaLabel: "Navigate to contact section" },
   ];
 };
 
@@ -76,6 +76,7 @@ export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [isScrolled, setIsScrolled] = useState(false);
+  const scrollPositionRef = useRef(0);
   
   const observerRef = useRef<IntersectionObserver | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -113,29 +114,37 @@ export default function MobileMenu() {
   // Body scroll lock when menu is open
   useEffect(() => {
     if (isOpen) {
-      // Save current scroll position
-      const scrollY = window.scrollY;
+      // Save current scroll position to ref
+      scrollPositionRef.current = window.scrollY;
+      
+      // Lock body scroll
       document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = "100%";
+      document.body.style.top = `-${scrollPositionRef.current}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
       document.body.style.overflow = "hidden";
     } else {
-      // Restore scroll position
-      const scrollY = document.body.style.top;
+      // Remove body scroll lock
       document.body.style.position = "";
       document.body.style.top = "";
-      document.body.style.width = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
       document.body.style.overflow = "";
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || "0") * -1);
-      }
+      
+      // Restore scroll position immediately
+      window.scrollTo({
+        top: scrollPositionRef.current,
+        left: 0,
+        behavior: 'instant' as ScrollBehavior
+      });
     }
 
     return () => {
       // Cleanup on unmount
       document.body.style.position = "";
       document.body.style.top = "";
-      document.body.style.width = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
       document.body.style.overflow = "";
     };
   }, [isOpen]);
@@ -232,22 +241,38 @@ export default function MobileMenu() {
         return;
       }
 
-      const targetId = link.replace("#", "");
+      // Handle both #section and /#section formats
+      const targetId = link.replace("/#", "").replace("#", "");
+      
+      // Check if we're on portfolio page and need to navigate to home
+      if (link.startsWith("/#") && isPortfolioPage) {
+        // Navigate to home page with hash
+        router.push(link);
+        closeMenu();
+        return;
+      }
+      
       const element = document.getElementById(targetId);
 
       if (element) {
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY + SCROLL_OFFSET;
+        // Close menu first to restore scroll position
+        closeMenu();
+        
+        // Wait for menu close animation and body scroll restoration
+        setTimeout(() => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY + SCROLL_OFFSET;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }, 350); // Wait for menu animation (300ms) + buffer
+      } else {
+        closeMenu();
       }
-
-      closeMenu();
     },
-    [router, closeMenu]
+    [router, closeMenu, isPortfolioPage]
   );
 
   return (
@@ -269,7 +294,7 @@ export default function MobileMenu() {
               width={160}
               height={32}
               priority
-              style={{ width: "160px", height: "auto" }}
+              style={{ width: "auto", height: "32px", objectFit: "contain" }}
               quality={90}
             />
           </div>
@@ -344,7 +369,7 @@ export default function MobileMenu() {
                     alt="Mindotek - PT. Logamindo Teknologi Indonesia"
                     width={240}
                     height={40}
-                    style={{ width: "240px", height: "auto" }}
+                    style={{ width: "auto", height: "32px", objectFit: "contain" }}
                     quality={90}
                   />
                 </div>

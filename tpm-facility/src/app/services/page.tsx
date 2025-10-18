@@ -5,7 +5,6 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Shield, Users, Wrench, Building, CheckCircle, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import OptimizedImage from '@/components/OptimizedImage'
 import MobileMenu from '@/components/MobileMenu'
 
 export default function ServicesPage() {
@@ -60,7 +59,7 @@ export default function ServicesPage() {
       title: 'Security Services',
       description: 'Professional security solutions with trained personnel and advanced monitoring systems',
       color: 'from-blue-500 to-blue-600',
-      image: '/assets/banner-hero/security.jpg',
+      image: '/assets/banner-hero/security.webp',
       features: [
         'Guard Officers with professional training',
         'Security consultants and planning',
@@ -74,7 +73,7 @@ export default function ServicesPage() {
       title: 'Cleaning & Gardening',
       description: 'Comprehensive cleaning and landscaping services for all types of properties',
       color: 'from-blue-600 to-blue-700',
-      image: '/assets/cleaning.JPG',
+      image: '/assets/banner-hero/cleaning.webp',
       features: [
         'General and specialized cleaning',
         'Hygiene cleaning for sensitive areas',
@@ -88,7 +87,7 @@ export default function ServicesPage() {
       title: 'Property Maintenance',
       description: 'Complete property maintenance solutions including mechanical, electrical, and building services',
       color: 'from-blue-700 to-blue-800',
-      image: '/assets/property_maintenance.JPG',
+      image: '/assets/banner-hero/property_maintenance.webp',
       features: [
         'Pest control services',
         'M&E maintenance and repairs',
@@ -102,7 +101,7 @@ export default function ServicesPage() {
       title: 'Office Support',
       description: 'Full-service office support including administration, technical, and operational services',
       color: 'from-blue-800 to-blue-900',
-      image: '/assets/office_support.jpg',
+      image: '/assets/banner-hero/office_support.webp',
       features: [
         'Front desk and reception services',
         'Administrative support',
@@ -194,7 +193,7 @@ export default function ServicesPage() {
     <div ref={heroRef} className="min-h-screen">
       <MobileMenu />
       {/* Hero Section */}
-      <section className="relative py-20 sm:py-32 bg-gradient-to-br from-blue-600 to-blue-400 overflow-hidden">
+      <section className="relative py-20 sm:py-32 bg-gradient-to-b from-blue-400 to-white overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-40 h-40 bg-blue-200 rounded-lg transform rotate-45"></div>
@@ -279,13 +278,13 @@ export default function ServicesPage() {
                         ))}
                       </ul>
 
-                      <a
+                      {/* <a
                         href={`#${service.id}`}
                         className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300"
                       >
                         Learn More
                         <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                      </a>
+                      </a> */}
                     </div>
 
                     {/* Hover Border Effect */}
@@ -451,6 +450,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-r from-blue-600 to-blue-800 relative overflow-hidden">

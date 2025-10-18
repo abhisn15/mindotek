@@ -28,13 +28,13 @@ const stats: Stat[] = [
   },
   {
     number: '30',
-    label: 'Regional Representatives',
+    label: 'Regional Offices',
     description: 'Across Indonesia',
     color: 'from-blue-700 to-blue-800'
   },
   {
     number: '5',
-    label: 'ISO Certifications',
+    label: 'ISO Certified',
     description: 'Quality Standards',
     color: 'from-blue-800 to-blue-900'
   }
@@ -129,7 +129,7 @@ export default function StatsSection() {
               className="group relative"
             >
               {/* Card */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200 relative overflow-hidden">
+              <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200 relative overflow-hidden">
                 {/* Gradient Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
                 
@@ -141,13 +141,13 @@ export default function StatsSection() {
                       end={parseInt(stat.number)}
                       duration={2.5}
                       suffix={stat.number.includes('+') ? '+' : ''}
-                      className={`text-5xl md:text-6xl font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
+                      className={`text-4xl md:text-5xl font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
                       delay={index * 0.2}
                     />
                   </div>
                   
                   {/* Label */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-300 leading-tight">
                     {stat.label}
                   </h3>
                   

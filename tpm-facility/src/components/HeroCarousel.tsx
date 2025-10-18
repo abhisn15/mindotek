@@ -26,7 +26,7 @@ export default function HeroCarousel() {
   const slides: Slide[] = [
     {
       id: 'security',
-      image: '/assets/banner-hero/security.jpg',
+      image: '/assets/banner-hero/security.webp',
       title: 'Security Services',
       subtitle: 'Professional Security Solutions',
       description:
@@ -36,7 +36,7 @@ export default function HeroCarousel() {
     },
     {
       id: 'cleaning',
-      image: '/assets/banner-hero/cleaning.jpg',
+      image: '/assets/banner-hero/cleaning.webp',
       title: 'Cleaning & Gardening',
       subtitle: 'Clean & Green Environment',
       description:
@@ -82,7 +82,10 @@ export default function HeroCarousel() {
 
     const timer = setTimeout(() => {
       setIsTransitioning(true)
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
+      // Add delay to allow CSS transitions to complete
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length)
+      }, 100)
     }, 5000) // Fixed duration to match all slides
 
     return () => {
@@ -128,60 +131,58 @@ export default function HeroCarousel() {
     }
   }, [currentSlide])
 
-  // Enhanced text entrance animation on each slide with different effects
+  // Enhanced text entrance animation on each slide with smoother effects
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Different animation styles based on slide index
+      // Simplified animation styles for smoother transitions
       const animationStyles = [
-        // Security - Zoom and bounce
+        // Security - Gentle fade and scale
         {
-          title: { y: 50, opacity: 0, scale: 0.8, rotationX: 15 },
-          subtitle: { x: -50, opacity: 0 },
-          description: { y: 30, opacity: 0 },
-          buttons: { scale: 0.5, opacity: 0, y: 20 }
+          title: { y: 30, opacity: 0, scale: 0.95 },
+          subtitle: { y: 20, opacity: 0 },
+          description: { y: 15, opacity: 0 },
+          buttons: { y: 10, opacity: 0 }
         },
-        // Cleaning - Slide from right
+        // Cleaning - Gentle slide from right
         {
-          title: { x: 100, opacity: 0, scale: 0.9 },
-          subtitle: { x: 80, opacity: 0 },
-          description: { x: 60, opacity: 0 },
-          buttons: { x: 40, opacity: 0, scale: 0.8 }
+          title: { x: 30, opacity: 0, scale: 0.95 },
+          subtitle: { x: 25, opacity: 0 },
+          description: { x: 20, opacity: 0 },
+          buttons: { x: 15, opacity: 0 }
         },
-        // Maintenance - Fade and scale
+        // Maintenance - Gentle fade and scale
         {
-          title: { opacity: 0, scale: 0.7, y: 40 },
-          subtitle: { opacity: 0, scale: 0.8, y: 20 },
-          description: { opacity: 0, scale: 0.9, y: 15 },
-          buttons: { opacity: 0, scale: 0.6, y: 25 }
+          title: { opacity: 0, scale: 0.95, y: 25 },
+          subtitle: { opacity: 0, y: 20 },
+          description: { opacity: 0, y: 15 },
+          buttons: { opacity: 0, y: 10 }
         },
-        // Office - Slide from left with rotation
+        // Office - Gentle slide from left
         {
-          title: { x: -100, opacity: 0, rotationY: 20 },
-          subtitle: { x: -80, opacity: 0, rotationY: 15 },
-          description: { x: -60, opacity: 0, rotationY: 10 },
-          buttons: { x: -40, opacity: 0, rotationY: 5 }
+          title: { x: -30, opacity: 0, scale: 0.95 },
+          subtitle: { x: -25, opacity: 0 },
+          description: { x: -20, opacity: 0 },
+          buttons: { x: -15, opacity: 0 }
         }
       ]
       
       const currentStyle = animationStyles[currentSlide] || animationStyles[0]
       
-      // Reset all elements
+      // Reset all elements with smoother initial state
       gsap.set('.hero-title', currentStyle.title)
       gsap.set('.hero-subtitle', currentStyle.subtitle)
       gsap.set('.hero-description', currentStyle.description)
       gsap.set('.hero-buttons', currentStyle.buttons)
       
-      // Animate title with bounce effect
+      // Animate title with smooth ease
       gsap.to('.hero-title', {
         y: 0,
         x: 0,
         opacity: 1,
         scale: 1,
-        rotationX: 0,
-        rotationY: 0,
-        duration: 1.2,
-        ease: 'back.out(1.7)',
-        delay: 0.1
+        duration: 1.0,
+        ease: 'power2.out',
+        delay: 0.2
       })
       
       // Animate subtitle
@@ -189,11 +190,9 @@ export default function HeroCarousel() {
         x: 0,
         y: 0,
         opacity: 1,
-        scale: 1,
-        rotationY: 0,
-        duration: 0.9,
-        ease: 'power3.out',
-        delay: 0.3
+        duration: 0.8,
+        ease: 'power2.out',
+        delay: 0.4
       })
       
       // Animate description
@@ -201,33 +200,29 @@ export default function HeroCarousel() {
         x: 0,
         y: 0,
         opacity: 1,
-        scale: 1,
-        rotationY: 0,
         duration: 0.8,
         ease: 'power2.out',
-        delay: 0.5
+        delay: 0.6
       })
       
-      // Animate buttons with elastic effect
+      // Animate buttons with smooth ease
       gsap.to('.hero-buttons', {
         x: 0,
         y: 0,
         opacity: 1,
-        scale: 1,
-        rotationY: 0,
         duration: 0.7,
-        ease: 'elastic.out(1, 0.3)',
-        delay: 0.7
+        ease: 'power2.out',
+        delay: 0.8
       })
       
-      // Add floating animation to title
+      // Add subtle floating animation to title (less aggressive)
       gsap.to('.hero-title', {
-        y: -5,
-        duration: 2,
-        ease: 'power2.inOut',
+        y: -3,
+        duration: 3,
+        ease: 'power1.inOut',
         yoyo: true,
         repeat: -1,
-        delay: 1.5
+        delay: 2.0
       })
       
     }, carouselRef)
@@ -248,18 +243,18 @@ export default function HeroCarousel() {
 
   return (
     <section ref={carouselRef} className="relative min-h-screen overflow-hidden">
-      {/* Background Images with Enhanced Animations */}
+      {/* Background Images with Smoother Transitions */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 ${
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
             aria-hidden={index !== currentSlide}
             style={{
-              transform: index === currentSlide ? 'scale(1)' : 'scale(1.1)',
-              transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)'
+              transform: index === currentSlide ? 'scale(1)' : 'scale(1.05)',
+              transition: 'all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
             }}
           >
             <Image
@@ -274,21 +269,21 @@ export default function HeroCarousel() {
                   slide.id === 'security'
                     ? 'brightness(1.15) contrast(1.06) saturate(1.06)'
                     : 'none',
-                transform: index === currentSlide ? 'scale(1.05)' : 'scale(1)',
-                transition: 'transform 8s ease-out'
+                transform: index === currentSlide ? 'scale(1.02)' : 'scale(1)',
+                transition: 'transform 10s ease-out'
               }}
             />
-            {/* Enhanced contrast overlays with gradient animation */}
+            {/* Smoother contrast overlays */}
             <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-black/10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/15 to-black/50" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-transparent to-black/5" />
           </div>
         ))}
       </div>
 
       {/* Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center">
-        <div className="w-full">
+        <div className="w-full py-20 md:py-0">
           <div className="mx-auto flex justify-center px-4 sm:px-6 lg:px-8">
             <div className="max-w-[65ch] md:max-w-[75ch] space-y-8 md:space-y-10 text-center">
               {/* Title - Enhanced Typography */}
@@ -300,8 +295,7 @@ export default function HeroCarousel() {
                   'leading-[0.85] tracking-[-0.02em]',
                   'drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]',
                   '[text-wrap:balance]',
-                  'bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent',
-                  'animate-pulse-slow'
+                  'bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent'
                 ].join(' ')}
                 style={{
                   textShadow: '0 0 40px rgba(255,255,255,0.3), 0 4px 20px rgba(0,0,0,0.8)'
@@ -367,7 +361,7 @@ export default function HeroCarousel() {
       </div>
 
       {/* Progress / Tiles */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-full max-w-6xl px-6 md:px-8">
+      <div className="hidden md:block absolute bottom-12 left-1/2 -translate-x-1/2 w-full max-w-6xl px-6 md:px-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 md:gap-6">
           {slides.map((slide, index) => {
             const isActive = index === currentSlide
